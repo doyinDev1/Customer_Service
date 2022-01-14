@@ -19,9 +19,9 @@ jobs:
       - name: Raise PR
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: 'auto-pr-branch'
+          branch: 'pr-branch'
           base: dev
-          title: 'demo for auto pr'
+          title: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} <${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}">
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           body: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} <${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}">
