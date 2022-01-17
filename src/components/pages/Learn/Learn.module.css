@@ -1,0 +1,108 @@
+.MainSection {
+	margin: 1rem 2rem;
+	padding: 2rem 1rem;
+	border-radius: 4px;
+}
+
+.MainSection h2 {
+	color: var(--color-green);
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.MainSection h3 {
+	color: var(--orange);
+	font-size: 18px;
+	margin-bottom: 1rem;
+}
+
+.MainSection p {
+	margin-bottom: 0;
+}
+
+.course_duration {
+	margin: 5px 0 10px;
+	font-size: 14px;
+	color: #777;
+}
+
+.CourseInfo {
+	box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.15);
+	padding: 2rem 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.MainSection {
+		margin: 1rem 10px;
+	}
+}
+
+.ButtonConatiner {
+	margin-top: 3rem;
+}
+
+.ButtonContainer a {
+	margin-right: 1rem;
+	text-decoration: none;
+	background-color: var(--color-green);
+	color: #fff;
+	padding: 5px 32px;
+	border-radius: 4px;
+	transition: all 0.4s ease-in-out;
+}
+
+.ButtonContainer a:hover {
+	background-color: var(--color-green);
+}
+
+.ButtonConatiner button {
+	background: transparent;
+	border: none;
+	outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+	.ButtonConatiner {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.ButtonContainer a {
+		margin-bottom: 1rem;
+	}
+}
+
+.Accordion {
+	margin: 10px 0;
+	border: none;
+}
+
+.Accordion .AccordionHeader button {
+	font-weight: 700;
+	color: var(--color-lightBlue);
+	padding: 1rem 5px;
+}
+
+.AccordionBody {
+	padding: 5px 1.25rem;
+	border-bottom: 1px solid #eee;
+}
+
+ul li {
+	line-height: 2;
+}
+
+.WarningBox {
+	text-align: center;
+	padding: 2rem 5px;
+}
+
+.WarningButtons {
+	display: flex;
+	justify-content: center;
+}
+
+.WarningButt button {
+	margin: 5px 10px;
+}

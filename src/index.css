@@ -18,6 +18,7 @@ body {
 :root {
 	--color-primary: #51903f;
 	--color-green: #528f3f;
-	--color-lightBlue: #1fa3af;
+	/* --color-lightBlue: #1fa3af; */
+	--color-lightBlue: #00afef;
 	--color-vlightBlue: #64dbef;
 }
