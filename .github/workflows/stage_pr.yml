@@ -1,0 +1,21 @@
+name: Staging Auto-PR
+on:
+  push:
+    branches: ['abisola', 'doyin']
+
+jobs:
+  pull-request:
+    name: Open PR to main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: checkout
+
+      - uses: repo-sync/pull-request@v2
+        name: pull-request
+        with:
+          destination_branch: 'dev'
+          pr_title: 'Pulling ${{ github.ref }} into dev'
+          pr_body: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} <${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}">
+          pr_draft: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
