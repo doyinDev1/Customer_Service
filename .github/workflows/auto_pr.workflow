@@ -1,17 +1,22 @@
-# workflow auto-pr
-workflow "auto-pr" {
-  resolves = ["create-pr"]
-  on = "push"
-}
+# ./.github/workflows/staging-auto-pr.yaml
+name: Staging Auto-PR
+on:
+  push:
+    branches: ['abisola', 'doyin']
 
-action "create-pr" {
-  uses = "smartinspereira/auto-create-pr-action@master"
-  secrets = ["GITHUB_TOKEN"]
-  env = {
-    BRANCH_PREFIX = ""
-    BASE_BRANCH = "dev"
-   #  PULL_REQUEST_TITLE = ""
-    # PULL_REQUEST_BODY = ""
-   # PULL_REQUEST_DRAFT = "true"
-  }
-}
+jobs:
+  pull-request:
+    name: Open PR to main
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: checkout
+
+    - uses: repo-sync/pull-request@v2
+      name: pull-request
+      with:
+        destination_branch: "dev"
+        pr_title: "Pulling ${{ github.ref }} into dev"
+        pr_body: ${{ env.GIT_COMMIT_MESSAGE_SUBJECT }} <${{ env.GIT_COMMIT_MESSAGE_SUBJECT }}">
+        pr_draft: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
