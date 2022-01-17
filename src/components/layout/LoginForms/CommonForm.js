@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 // import axios from 'axios';
 // import Loader from '../Loader/Loader';
-import { Redirect, useHistory } from 'react-router-dom';
+// import { Navigate, useHistory } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required('Your Email is required').email('Please enter a valid email'),
@@ -32,7 +32,7 @@ const CommonForm = () => {
 	const userInfo = sessionStorage.getItem('coachingAuth');
 
 	// disable login page if you are logged in already
-	if (userInfo !== null) return <Redirect to="/learn" />;
+	// if (userInfo !== null) return <Navigate to="/learn" />;
 
 	const onLoginFormSubmit = (data) => {
 		const myFormData = data;
