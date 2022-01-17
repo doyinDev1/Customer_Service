@@ -5,9 +5,8 @@
 	height: 65px;
 	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 	padding: 10px 2rem;
-	background-color: #00afef;
+	background-color: var(--color-primary);
 }
-
 
 .UserHeader img {
 	height: 100%;

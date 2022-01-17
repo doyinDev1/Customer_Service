@@ -1,0 +1,10 @@
+.MainSection {
+	margin: 1rem 2rem;
+	padding: 2rem 1rem;
+}
+
+.PageHeader {
+	color: var(--color-green);
+	font-weight: 700;
+	font-size: 24px;
+}

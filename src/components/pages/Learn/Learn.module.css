@@ -1,24 +1,30 @@
 .MainSection {
 	margin: 1rem 2rem;
 	padding: 2rem 1rem;
-	border-radius: 4px;
 }
 
-.MainSection h2 {
+.CourseContainer {
+	display: flex;
+	padding: 5px 1rem;
+	/* flex-wrap: wrap; */
+}
+
+.Heading {
+	font-size: 18px;
+	color: var(--color-green);
+	font-weight: 700;
+}
+
+.PageHeader {
 	color: var(--color-green);
 	font-weight: 700;
 	font-size: 24px;
+	/* margin-bottom: 1rem; */
 }
 
-.MainSection h3 {
-	color: var(--orange);
-	font-size: 18px;
-	margin-bottom: 1rem;
-}
-
-.MainSection p {
+/* .MainSection p {
 	margin-bottom: 0;
-}
+} */
 
 .course_duration {
 	margin: 5px 0 10px;
@@ -26,9 +32,15 @@
 	color: #777;
 }
 
+.Assessment {
+	filter: grayscale(100);
+	pointer-events: none;
+}
+
 .CourseInfo {
 	box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.15);
 	padding: 2rem 1rem;
+	margin: 0 3rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -39,14 +51,15 @@
 
 .ButtonConatiner {
 	margin-top: 3rem;
+	display: flex;
+	align-items: center;
 }
 
 .ButtonContainer a {
 	margin-right: 1rem;
-	text-decoration: none;
 	background-color: var(--color-green);
 	color: #fff;
-	padding: 5px 32px;
+	padding: 9px 32px;
 	border-radius: 4px;
 	transition: all 0.4s ease-in-out;
 }
