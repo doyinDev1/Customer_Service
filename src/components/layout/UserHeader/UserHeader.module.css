@@ -1,0 +1,36 @@
+.UserHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 65px;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+	padding: 10px 2rem;
+	background-color: var(--color-primary);
+}
+
+.UserHeader img {
+	height: 100%;
+}
+
+.UserHeader .Logo {
+	width: 6rem;
+	object-fit: contain;
+	margin-right: auto;
+}
+
+.UserHeader h2 {
+	color: var(--blue);
+	font-weight: 700;
+	font-size: 16px;
+	margin: 0 auto;
+}
+
+.UserHeader button {
+	background: transparent;
+	font-family: inherit;
+	font-weight: 700;
+	color: #fff;
+	border: none;
+	outline: none;
+	margin-left: 8px;
+}
