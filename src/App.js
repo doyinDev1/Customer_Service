@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Learn from './components/pages/Learn/Learn';
 import Login from './components/pages/Login/Login';
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
 		<>
 			<Routes>
 				<Route exact path="/" element={<Login />} />
+				<Route exact path="/learn" element={<Learn />} />
 			</Routes>
 		</>
 	);
