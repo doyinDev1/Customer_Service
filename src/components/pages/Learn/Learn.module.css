@@ -1,24 +1,24 @@
 .MainSection {
 	margin: 1rem 2rem;
 	padding: 2rem 1rem;
-	border-radius: 4px;
 }
 
-.MainSection h2 {
+.CourseContainer {
+	display: flex;
+	padding: 5px 1rem;
+	/* flex-wrap: wrap; */
+}
+
+.PageHeader {
 	color: var(--color-green);
 	font-weight: 700;
 	font-size: 24px;
+	/* margin-bottom: 1rem; */
 }
 
-.MainSection h3 {
-	color: var(--orange);
-	font-size: 18px;
-	margin-bottom: 1rem;
-}
-
-.MainSection p {
+/* .MainSection p {
 	margin-bottom: 0;
-}
+} */
 
 .course_duration {
 	margin: 5px 0 10px;
