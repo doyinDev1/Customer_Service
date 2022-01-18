@@ -1,0 +1,18 @@
+.Navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 65px;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+	padding: 10px 2rem;
+	background-color: var(--color-primary);
+}
+
+.Brand {
+	margin-right: auto;
+}
+.Logo {
+	width: 6rem;
+	object-fit: contain;
+	margin-right: auto;
+}

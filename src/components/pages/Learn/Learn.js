@@ -1,9 +1,9 @@
-import ProgressBar from 'react-bootstrap/ProgressBar';
+// import ProgressBar from 'react-bootstrap/ProgressBar';
 import UserHeader from '../../layout/UserHeader/UserHeader';
 import classes from './Learn.module.css';
 import { Link } from 'react-router-dom';
 // import { CloseOutlined } from '@material-ui/icons';
-import { Button, Accordion } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Toaster } from 'react-hot-toast';
 import CourseCard from '../../layout/CourseCard/CourseCard';
 
