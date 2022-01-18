@@ -1,0 +1,33 @@
+/* .NavItem {
+	padding-bottom: 1rem;
+} */
+
+.NavItem a {
+	font-family: inherit;
+	text-decoration: none;
+	color: #fff;
+	padding: 0 1rem;
+	font-weight: 700;
+	font-size: 15px;
+}
+
+.NavItem .ActiveLink {
+	color: var(--color-darkBlue);
+	font-weight: 700;
+}
+
+@media only screen and (max-width: 768px) {
+	.NavItem {
+		padding-bottom: 8px;
+	}
+	.NavItem a {
+		/* font-size: 14px; */
+		padding: 0;
+	}
+}
+
+/* @media only screen and (max-width: 600px) {
+	.NavItem a {
+		font-size: 18px;
+	}
+} */
