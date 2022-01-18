@@ -1,0 +1,46 @@
+.Card {
+	border-radius: 4px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	height: 300px;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+	transition: all ease 0.4s;
+}
+
+.Card:hover {
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.CourseImage {
+	width: 100%;
+	height: 50%;
+	object-fit: cover;
+}
+
+.CourseTextContainer {
+	padding: 10px 14px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.CourseTextContainer h5 {
+	font-weight: 700;
+	color: var(--color-blue);
+	font-size: 18px;
+}
+
+.CourseTextContainer p {
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.CourseTextContainer a {
+	color: var(--color-green);
+	font-weight: 700;
+	font-size: 14px;
+	margin-bottom: 8px;
+	justify-self: flex-end;
+}

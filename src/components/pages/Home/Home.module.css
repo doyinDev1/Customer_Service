@@ -38,10 +38,20 @@
 
 .FeaturedCourses {
 	background-color: #fff;
+	padding: 3rem 0;
+}
+
+.CourseCardContainer {
+	display: flex;
+	padding: 1rem 2rem;
+}
+
+.CourseCardContainer div:first-child {
+	margin-right: 4rem;
 }
 
 .SectionHeading {
-	color: var(--color-green);
+	color: var(--color-primary);
 	padding: 1rem 0 10px;
 	font-size: 24px;
 	font-weight: 700;

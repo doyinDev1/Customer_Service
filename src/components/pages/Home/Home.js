@@ -16,7 +16,7 @@ const Home = () => {
 						cum rem mollitia blanditiis magnam minima.
 					</p>
 					<Link to="/login" className={classes.LoginLink}>
-						Login Here
+						Login
 					</Link>
 				</Container>
 			</header>
