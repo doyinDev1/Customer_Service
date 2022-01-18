@@ -59,6 +59,7 @@ function UserForm() {
 												fontWeight: '700',
 												paddingLeft: 20,
 												paddingRight: 20,
+												color: 'white',
 											}}
 										>
 											User{' '}
@@ -69,6 +70,7 @@ function UserForm() {
 												fontWeight: '700',
 												paddingLeft: 20,
 												paddingRight: 20,
+												color: 'white',
 											}}
 										>
 											Admin
@@ -86,10 +88,6 @@ function UserForm() {
 																User
 															</h4>
 															<div className={classes.form_group}>
-																<label style={{ color: 'black' }} htmlFor="email">
-																	{' '}
-																	email{' '}
-																</label>
 																<input
 																	className={classes.form_style}
 																	type="email"
@@ -98,17 +96,13 @@ function UserForm() {
 																	{...register('email')}
 																	required
 																/>
+																<i className={`${classes.input_icon} uil uil-at`}></i>
+
 																{errors.email && (
 																	<p className={classes.ErrorMsg}>{errors.email?.message}</p>
 																)}
-
-																{/* <i className="input_icon uil uil-at"></i> */}
 															</div>
 															<div className={`${classes.form_group} mt-2`}>
-																<label style={{ color: 'black' }} htmlFor="employee_id">
-																	{' '}
-																	employee ID{' '}
-																</label>
 																<input
 																	className={classes.form_style}
 																	type="text"
@@ -118,11 +112,10 @@ function UserForm() {
 																	{...register('employee_id')}
 																	required
 																/>
+																<i className={`${classes.input_icon} uil uil-lock-alt`}></i>
 																{errors.employee_id && (
 																	<p className={classes.ErrorMsg}>{errors.employee_id?.message}</p>
 																)}
-
-																<i className="input_icon uil uil-lock-alt"></i>
 															</div>
 															<button type="submit" className={`${classes.btn} mt-4`}>
 																{' '}
@@ -140,10 +133,6 @@ function UserForm() {
 																Admin
 															</h4>
 															<div className={classes.form_group}>
-																<label style={{ color: 'black' }} htmlFor="access_code">
-																	{' '}
-																	access code{' '}
-																</label>
 																<input
 																	className={classes.form_style}
 																	type="number"
@@ -152,11 +141,12 @@ function UserForm() {
 																	{...register('access_code')}
 																	required
 																/>
+																<i className={`${classes.input_icon} uil uil-lock-alt`}></i>
+
 																{errors.access_code && (
 																	<p className={classes.ErrorMsg}>{errors.access_code?.message}</p>
 																)}
 															</div>
-
 															<button type="submit" className={`${classes.btn} mt-4`}>
 																{' '}
 																Sign in{' '}
