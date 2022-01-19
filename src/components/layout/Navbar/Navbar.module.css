@@ -1,15 +1,39 @@
 .Navbar {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 65px;
+
+	flex-direction: column;
+
 	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-	padding: 10px 2rem;
+	margin: 0;
+	padding: 0;
+
+	/* background-color: var(--color-primary); */
+}
+
+.NavBrandContainer {
+	flex-direction: column;
+	padding: 3px 0;
+}
+
+.NavContainer {
+	width: 100%;
 	background-color: var(--color-primary);
 }
 
 .Brand {
-	margin-right: auto;
+	/* margin-right: auto;
+	background-color: #fff; */
+	width: 100%;
+	justify-self: flex-start;
+	background-color: #fff;
+}
+
+.Nav {
+	background-color: var(--color-primary);
+	width: 100%;
+	padding: 5px 0;
+	display: flex;
+	justify-content: flex-end;
 }
 .Logo {
 	width: 6rem;

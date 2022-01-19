@@ -12,15 +12,19 @@ const UserHeader = () => {
 	};
 
 	return (
-		<header className={classes.UserHeader}>
-			<img src={Logo} alt="Roleplay Services" className={classes.Logo} />
+		<nav className={classes.UserHeader}>
+			<div className={classes.LogoContainer}>
+				<img src={Logo} alt="Roleplay Services" className={classes.Logo} />
+			</div>
 			{/* <h2>Learn</h2> */}
 			{/* <div className="LoremLogo">
 				<p>Powered By:</p>
 				<img src={LoremLogo} alt="loremexcellentiam" />
 			</div> */}
-			<button onClick={onLogout}>Log Out</button>
-		</header>
+			<div className={classes.NavItems}>
+				<button onClick={onLogout}>Log Out</button>
+			</div>
+		</nav>
 	);
 };
 

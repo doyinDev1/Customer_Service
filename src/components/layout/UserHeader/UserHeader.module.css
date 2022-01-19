@@ -1,11 +1,21 @@
 .UserHeader {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+
 	justify-content: space-between;
 	height: 65px;
 	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-	padding: 10px 2rem;
+}
+
+.LogoContainer {
+	background-color: #fff;
+	padding: 5px 2rem;
+}
+
+.NavItems {
 	background-color: var(--color-primary);
+	padding: 10px 2rem;
+	display: flex;
 }
 
 .UserHeader img {
@@ -32,5 +42,5 @@
 	color: #fff;
 	border: none;
 	outline: none;
-	margin-left: 8px;
+	margin-left: auto;
 }

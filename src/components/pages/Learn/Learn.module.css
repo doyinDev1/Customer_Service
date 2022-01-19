@@ -5,6 +5,8 @@
 
 .CourseContainer {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	padding: 5px 1rem;
 	/* flex-wrap: wrap; */
 }
@@ -16,7 +18,7 @@
 }
 
 .PageHeader {
-	color: var(--color-green);
+	color: var(--color-primary);
 	font-weight: 700;
 	font-size: 24px;
 	/* margin-bottom: 1rem; */

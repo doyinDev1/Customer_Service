@@ -17,12 +17,14 @@ const Learn = () => {
 
 				<div className={classes.CourseContainer}>
 					<CourseCard
+						image="courseOne"
 						courseTitle="Course One"
 						courseDescription="The Art of Coaching course will equip you with tools to develop your coaching skills and
 						work towards becoming the sort of leader that people would choose to be led by."
 						courseID="3"
 					/>
 					<CourseCard
+						image="courseTwo"
 						courseTitle="Course One"
 						courseDescription="The Art of Coaching course will equip you with tools to develop your coaching skills and
 						work towards becoming the sort of leader that people would choose to be led by."
