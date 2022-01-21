@@ -1,0 +1,175 @@
+.Underlay {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 95;
+}
+@media screen and (min-width: 1024px) {
+	.UnderLay {
+		width: 0;
+		height: 0;
+	}
+}
+
+.SideBarContainer {
+	height: 100%;
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-size: 14px;
+	background-color: white;
+	position: fixed;
+	z-index: 100;
+	left: -280px;
+	transition: 100ms ease-out;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/* border-right: 1px solid var(--blue); */
+	background-color: white;
+	-webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	-khtml-box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	-moz-box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.SideBarContainer::-webkit-scrollbar {
+	background-color: white;
+	width: 10px;
+}
+
+.SideBarContainer::-webkit-scrollbar-thumb {
+	background-color: var(--color-darkBlue);
+	border-radius: 3px;
+	cursor: pointer;
+	visibility: hidden;
+}
+
+.SideBarContainer:hover::-webkit-scrollbar-thumb {
+	visibility: visible;
+}
+
+@media screen and (min-width: 1022px) {
+	.SideBarContainer {
+		left: 0 !important;
+	}
+}
+
+/* export const SideBarTop = styled.div`` */
+
+.SideBarMenuWrapper {
+	margin-top: 10px;
+}
+
+.SideBarMenuWrapper > h3 {
+	font-size: 23px;
+	font-weight: 600;
+	text-align: center;
+	margin: 30px 0;
+}
+
+.Host {
+	text-align: center;
+	margin: 20px auto;
+	/* position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%); */
+	text-transform: capitalize;
+	font-weight: 400;
+	width: 100%;
+}
+
+.Host > img {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.Host > span {
+	text-transform: uppercase;
+	font-weight: 700;
+	display: block;
+	color: var(--orange);
+}
+
+.BrandLogo {
+	background-color: white;
+	display: flex;
+	align-items: center;
+	z-index: 100;
+	padding: 1rem 1.5rem;
+	height: 5rem;
+	position: sticky;
+	top: 0;
+	border-bottom: 1px solid grey;
+}
+
+.BrandLogo > img {
+	height: 85%;
+}
+
+.BrandLogo > h1 {
+	height: fit-content;
+	width: fit-content;
+	background-color: #002049;
+	color: white;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+	.BrandLogo {
+		justify-content: center;
+	}
+
+	.BrandLogo > h1 {
+		display: none;
+	}
+}
+
+.Toggler {
+	margin-right: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+	.Toggler {
+		display: none;
+	}
+}
+
+.SideBarMenu {
+	margin-bottom: 20px;
+}
+
+.SideBarMenu > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.SideBarMenu > ul > li {
+	margin: 0 10px;
+}
+
+.SideBarMenu > ul > li > p {
+	padding: 15px 25px;
+	margin: 0;
+	border-radius: 10px;
+	cursor: pointer;
+	color: #333;
+	width: 100%;
+	display: inline-block;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+.SideBarMenu > span {
+	font-weight: 500;
+	font-size: 14px;
+	margin-left: 15px;
+	text-transform: uppercase;
+	overflow: hidden;
+}

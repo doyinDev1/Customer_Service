@@ -1,0 +1,13 @@
+.PageWrapper {
+	padding-top: 90px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	background-color: #eee;
+	min-height: 100vh;
+}
+
+@media screen and (min-width: 1024px) {
+	.PageWrapper {
+		padding-left: 300px;
+	}
+}
