@@ -1,0 +1,43 @@
+.CourseDescription {
+  padding-top: 2rem;
+}
+
+.CourseDecsHeader {
+  font-size: 30px;
+}
+
+.CourseLearn {
+  background-color: rgb(187, 187, 187);
+  padding: 2rem 2.3rem;
+  border-radius: 5px;
+}
+.ListCourse {
+  display: flex;
+}
+.CourseFor {
+  padding: 2rem 0;
+}
+.CourseForText {
+  line-height: 1.6;
+}
+
+@media only screen and (max-width: 481px) {
+  .CourseDecsHeader {
+    font-size: 23px;
+    padding-bottom: 1rem;
+  }
+
+  .TextCourse {
+    padding-left: 16px;
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .CourseLearn {
+    padding: 2rem 1.1rem;
+  }
+
+  .UnorderedList {
+    font-size: 12px;
+    padding-left: 1rem;
+  }
+}

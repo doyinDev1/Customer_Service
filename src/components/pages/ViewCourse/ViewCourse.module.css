@@ -1,0 +1,48 @@
+.MainSection {
+  margin: 1rem 2rem;
+  padding: 2rem 1rem;
+}
+
+.PageHeader {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+}
+
+.CourseContainer {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 5px 1rem;
+}
+
+.CourseImage {
+  border-radius: 10px;
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.CourseInformation {
+  padding-top: 2rem;
+}
+
+.CourseDescription {
+  margin: 1rem 2rem;
+  padding: 2rem 3.2rem;
+}
+
+@media only screen and (max-width: 481px) {
+  .PageHeader {
+    font-size: 18px;
+  }
+  .CourseImage {
+    height: auto;
+  }
+  .CourseContainer {
+    padding: 1rem 0;
+  }
+
+}
+
