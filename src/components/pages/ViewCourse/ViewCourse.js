@@ -27,8 +27,7 @@ const ViewCourse = (props) => {
 						value={pageKey}
 						setValue={setPageKey}
 						tabLabels={['Course Description', 'Curriculum']}
-						props
-						
+										
 					/>
 					{pageKey === 0 && <CourseDescription />}
 					{pageKey === 1 && <CourseCurriculum />}
