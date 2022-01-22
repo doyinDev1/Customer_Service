@@ -1,6 +1,9 @@
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
+
+
+
 const ScrollableTabsButtonAuto = ({
 	value,
 	setValue,
@@ -14,6 +17,7 @@ const ScrollableTabsButtonAuto = ({
 		// setCourseLabel && setCourseLabel('')
 	}
 
+
 	return (
 		<Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
 			<Tabs
@@ -24,15 +28,16 @@ const ScrollableTabsButtonAuto = ({
 				aria-label='scrollable auto tabs example'
 				centered={true}>
 				{tabLabels.map((label, index) => (
-					<Tab 
+					<Tab
 						key={index}
 						label={label}
+
 						style={{
 							backgroundColor: value === index && 'var(--color-green)',
-							color: value === index && 'var(--color-primary)',
+							color: value === index && 'white',
 							outline: 'none',
 							fontSize: 16,
-							fontFamily: 'Montserrat'
+							fontFamily: 'Montserrat',
 						}}
 					/>
 				))}
