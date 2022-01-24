@@ -1,32 +1,24 @@
-import { Person, LockOpen, ViewModule, CardMembership } from "@material-ui/icons";
+import { Person, LockOpen, ViewModule, CardMembership } from '@material-ui/icons';
+import classes from './Dashboard.module.css';
 import { useState } from 'react';
+import CourseSummary from '../../layout/Admin/CourseSummaryCards/CourseSummary';
+import DataTable from '../../layout/Admin/DataTable/DataTable';
 
 const Reports = () => {
-    const [ view, setView ] = useState('allCandidates')
-    
+	const [view, setView] = useState('allCandidates');
 
+	return (
+		<section className={classes.Reports}>
+			<h1>Reports</h1>
+			<div className={classes.TopSection}>
+				<CourseSummary />
+				<CourseSummary />
+			</div>
+			<DataTable />
+		</section>
+	);
+};
 
-   
-
-    return (
-        <section>
-           
-        </section>
-    )
-}
-
-export default Reports
-
-// export const SummaryContainer = styled.div`
-//     margin: 15px;
-//     overflow: auto;
-
-//     > div {
-//         display: grid;
-//         gap: 15px;
-//         grid-template-columns: repeat(4, 1fr);
-//         min-width: 1100px;
-//     }
-// `
+export default Reports;
 
 // export const TableView = styled.div``

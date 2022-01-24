@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import classes from './Dashboard.module.css';
 import { Assessment, Error } from '@material-ui/icons';
 import { Toaster } from 'react-hot-toast';
 import AdminDashboardHeader from '../../layout/AdminDashboardHeader/AdminDashboardHeader';
@@ -40,7 +41,7 @@ const Dashboard = () => {
 				setCurrentPage={setCurrentPage}
 				pages={pages}
 			/>
-			<div>
+			<div className={classes.PageWrapper}>
 				{pages.map((page, index) =>
 					currentPage === index ? <div key={index}>{page.page}</div> : ''
 				)}

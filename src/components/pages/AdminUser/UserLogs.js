@@ -13,6 +13,7 @@ const UserLogs = () => {
 				<button id="All">All</button>
 				<button id="Error">Errors</button>
 			</div>
+			<h3>User Logs Page</h3>
 			{/* // {tableType === 'All' && <AllLogs />}
 			// {tableType === 'Error' && <ErrorLogs />} */}
 		</section>

@@ -6,7 +6,7 @@
 	height: 5rem;
 	width: 100%;
 	padding: 1rem 1.5rem;
-	border-bottom: 1px solid var(--blue);
+	border-bottom: 1px solid var(--color-blue);
 	position: fixed;
 	top: 0;
 	z-index: 90;
