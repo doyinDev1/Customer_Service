@@ -18,7 +18,6 @@ const CourseCurriculum = () => {
           }}
           className={classes.ModuleName}> Module One </button>
 
-
         <Modal show={IframeModal} fullscreen onHide={() => setIframeModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Module 1</Modal.Title>

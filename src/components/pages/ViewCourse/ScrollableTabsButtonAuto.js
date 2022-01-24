@@ -8,15 +8,11 @@ const ScrollableTabsButtonAuto = ({
 	value,
 	setValue,
 	tabLabels,
-	// setCandidateLabel,
-	// setCourseLabel,
+
 }) => {
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
-		// setCandidateLabel && setCandidateLabel('')
-		// setCourseLabel && setCourseLabel('')
 	}
-
 
 	return (
 		<Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
@@ -26,12 +22,11 @@ const ScrollableTabsButtonAuto = ({
 				variant={'scrollable'}
 				scrollButtons='auto'
 				aria-label='scrollable auto tabs example'
-				centered={true}>
+				>
 				{tabLabels.map((label, index) => (
 					<Tab
 						key={index}
 						label={label}
-
 						style={{
 							backgroundColor: value === index && 'var(--color-green)',
 							color: value === index && 'white',
@@ -47,3 +42,7 @@ const ScrollableTabsButtonAuto = ({
 }
 
 export default ScrollableTabsButtonAuto
+
+
+// ssh product testing
+// 3 admins and 12 agents
