@@ -1,0 +1,88 @@
+.SummaryCard {
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	overflow: hidden;
+	border: 2px solid var(--color-vlightBlue);
+	background-color: #fff;
+	box-shadow: 1px 8px 12px rgba(0, 0, 0, 0.15);
+	margin: 5px 10px;
+	background-color: var(--color-vlightBlue);
+	transition: all ease-in-out 0.4s;
+}
+
+.SummaryCard:hover {
+	box-shadow: 1px 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* .SummaryCard span {
+	width: 100%;
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 4px;
+	height: 3px;
+	margin: 0 10px;
+	text-align: center;
+	position: relative;
+} */
+/* 
+.SummaryCard span::after {
+	width: 40%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 3px;
+	background-color: var(--color-primary);
+	z-index: 3;
+} */
+
+.TextHeader {
+	background-color: var(--color-vlightBlue);
+	padding: 8px;
+	display: flex;
+	/* justify-content: center; */
+}
+
+.TextHeader > div {
+	text-align: left;
+}
+
+.TextHeader > svg {
+	margin-right: 10px;
+	fill: var(--color-primary);
+	height: 2.5rem;
+	width: 2.5rem;
+}
+
+.TextHeader h5 {
+	margin-bottom: 0;
+	font-weight: 700;
+	font-size: 16px;
+	color: #fff;
+}
+
+.TextHeader p {
+	font-size: 14px;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+.Progress {
+	/* display: flex;
+	justify-content: center; */
+	/* padding: 8px; */
+	height: 4px;
+	margin: 8px;
+	background-color: #fff;
+}
+
+.Progress div {
+	background-color: var(--color-primary) !important;
+}
+
+.InProgressText {
+	font-size: 14px;
+	font-weight: 700;
+	text-align: right;
+	margin-right: 8px;
+}
