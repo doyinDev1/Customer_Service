@@ -1,0 +1,37 @@
+.DashboardHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	height: 5rem;
+	width: 100%;
+	padding: 1rem 1.5rem;
+	border-bottom: 1px solid var(--color-blue);
+	position: fixed;
+	top: 0;
+	z-index: 90;
+}
+
+.DashboardHeader > img {
+	height: 100%;
+	margin-left: 20px;
+}
+
+/* export const Toggler = styled.div`` */
+
+.LogOutBtn {
+	background: transparent;
+	font-family: inherit;
+	font-weight: 500;
+	font-size: 12px;
+	border: 1px solid brown;
+	outline: none;
+	text-transform: uppercase;
+	padding: 3px 15px;
+	border-radius: 2px;
+	color: brown;
+}
+
+.LogOutBtn:hover {
+	background-color: whitesmoke;
+}
