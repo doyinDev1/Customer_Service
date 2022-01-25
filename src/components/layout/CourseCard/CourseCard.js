@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import classes from './CourseCard.module.css';
 
@@ -6,6 +5,8 @@ const images = {
 	courseOne: 'https://res.cloudinary.com/abisola/image/upload/v1642544624/2473945-min_o0v94k.png',
 	courseTwo: 'https://res.cloudinary.com/abisola/image/upload/v1642544624/5124556-min_cjo8d9.png',
 };
+
+const data = [];
 
 const CourseCard = (props) => {
 	// const idStr = '9';
@@ -23,7 +24,9 @@ const CourseCard = (props) => {
 					<p className={classes.CourseStatus}>
 						Completed: 1 <span>of</span> 1
 					</p>
-					<Link to={`/learn/${props.courseID}`}>View Course</Link>
+					<Link to={`/learn/${props.courseID}`}
+						state={{ from: data, props }}
+					>View Course</Link>
 				</div>
 			</div>
 		</div>
