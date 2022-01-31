@@ -11,8 +11,8 @@ const Reports = () => {
 		<section className={classes.Reports}>
 			<h1>Reports</h1>
 			<div className={classes.TopSection}>
-				<CourseSummary />
-				<CourseSummary />
+				<CourseSummary courseName="The Art of Coaching" inProgress={35} enrolled={100} />
+				<CourseSummary courseName="Social Media Mangement" inProgress={18} enrolled={80} />
 			</div>
 			<DataTable />
 		</section>

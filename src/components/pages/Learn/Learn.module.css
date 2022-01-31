@@ -38,8 +38,7 @@
 	filter: grayscale(100);
 	pointer-events: none;
 }
-
-.CourseInfo {
+.AssessmentInfo {
 	box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.15);
 	padding: 2rem 1rem;
 	margin: 0 3rem;
@@ -76,18 +75,6 @@
 	outline: none;
 }
 
-@media only screen and (max-width: 600px) {
-	.ButtonConatiner {
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-	}
-
-	.ButtonContainer a {
-		margin-bottom: 1rem;
-	}
-}
-
 .Accordion {
 	margin: 10px 0;
 	border: none;
@@ -120,4 +107,25 @@ ul li {
 
 .WarningButt button {
 	margin: 5px 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	.ButtonContainer {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.ButtonContainer a {
+		margin-bottom: 1rem;
+		margin-right: 0;
+	}
+
+	.CourseContainer {
+		padding: 0;
+	}
+
+	.AssessmentInfo {
+		margin: 0;
+	}
 }
