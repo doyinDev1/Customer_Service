@@ -16,6 +16,15 @@
 	margin-bottom: 1rem;
 }
 
+.HeadingTextDiv {
+	min-height: 60px;
+	overflow: hidden;
+}
+
+.HeadingTextDiv span {
+	display: inline-block;
+}
+
 .Paragraph {
 	color: whitesmoke;
 	font-size: 16px;
@@ -55,4 +64,56 @@
 	padding: 1rem 0 10px;
 	font-size: 24px;
 	font-weight: 700;
+}
+
+@media only screen and (max-width: 990px) {
+	.PageHeader {
+		font-size: 48px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.PageHeader {
+		width: 70%;
+	}
+
+	.Paragraph {
+		width: 80%;
+	}
+
+	.CourseCardContainer {
+		flex-direction: column;
+	}
+
+	.CourseCardContainer div:first-child {
+		margin-right: 0;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.PageHeader {
+		text-align: center;
+		width: 100%;
+		/* font-size: 42px; */
+	}
+
+	.Paragraph {
+		width: 100%;
+		text-align: center;
+	}
+
+	.HeaderParagraph {
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.PageHeader {
+		font-size: 38px;
+	}
+
+	.HeadingTextDiv {
+		min-height: 42px;
+		overflow: hidden;
+	}
 }

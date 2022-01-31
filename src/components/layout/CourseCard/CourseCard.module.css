@@ -68,3 +68,13 @@
 .LinkContainer a:hover {
 	color: var(--color-primary);
 }
+
+@media only screen and (max-width: 768px) {
+	.CourseCardImage {
+		width: 100%;
+	}
+	.CourseCard {
+		flex-direction: column;
+		height: min-content;
+	}
+}

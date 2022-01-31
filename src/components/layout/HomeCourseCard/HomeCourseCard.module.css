@@ -44,3 +44,16 @@
 	margin-bottom: 8px;
 	justify-self: flex-end;
 }
+
+@media only screen and (max-width: 990px) {
+	.Card {
+		width: 45%;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.Card {
+		width: 100%;
+		margin-bottom: 2rem;
+	}
+}
