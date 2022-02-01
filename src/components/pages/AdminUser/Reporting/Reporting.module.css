@@ -1,0 +1,296 @@
+:root {
+	--box-box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/* .SubContainer {
+    margin: 20px 0;
+} */
+
+.SubContainer > p {
+	/* background-color: var(--color-lightBlue); */
+	background-color: rgb(127, 196, 191);
+	color: var(--color-green);
+	margin: 0;
+	padding: 7px 10px;
+	font-size: 18px;
+	font-weight: 900;
+	letter-spacing: 0.5px;
+	font-family: 'Nunito', sans-serif;
+	text-transform: uppercase;
+}
+
+.InnerContainer {
+	/* background-color: white; */
+	padding: 15px;
+}
+
+.CourseFilters {
+	display: grid;
+	gap: 3px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #aaa;
+}
+
+.SearchSelection {
+	margin: 10px 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #aaa;
+}
+
+.SearchSelection input {
+	width: 100%;
+	height: 45px;
+	padding: 12px;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 500;
+	border-radius: 5px;
+	border: 1px solid #bbb;
+	outline: none;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.SearchSelection input:focus {
+	border: 2px solid var(--color-primary);
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.CompanyItems {
+	margin: 30px 0;
+}
+
+.CompanyItems > p {
+	font-size: 12px;
+}
+
+.CompanyItems > p > span {
+	font-style: italic;
+}
+
+.CourseDetails {
+	margin: 20px 0;
+	display: grid;
+	gap: 20px;
+}
+
+.CourseValues {
+	position: relative;
+	border-radius: 10px;
+	color: #333;
+	background-color: white;
+	border: 1px solid transparent;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	padding: 10px;
+}
+
+.CourseValuesValues > p {
+	font-size: 11px;
+	padding: 2px 5px;
+	text-transform: uppercase;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	border-bottom: 1px solid #ddd;
+	/* font-family: 'Nunito', sans-serif; */
+	letter-spacing: 0.5px;
+	font-weight: 600;
+}
+
+.CourseValuesValues > p > span {
+	text-transform: capitalize;
+	padding: 0 10px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: 700;
+	/* background-color: #ffc58f76; */
+	background-color: whitesmoke;
+	color: #555;
+	color: var(--color-primary);
+	/* color: var(--color-secondary);							 */
+}
+
+.CourseValuesChart {
+	position: relative;
+	padding: 10px;
+	border-radius: 10px;
+	overflow: auto;
+	background-color: white;
+	border: 1px solid transparent;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.CourseValues > p,
+.CourseValuesChart > p {
+	/* font-family: 'Nunito', sans-serif; */
+	text-transform: uppercase;
+	padding: 7px 0;
+	border-radius: 2px;
+	border-top-left-radius: 10px;
+	min-width: fit-content;
+	margin-bottom: 20px;
+	/* color: var(--color-secondary); */
+	color: #555;
+	font-size: 14px;
+	font-weight: 700;
+	/* position: absolute;
+    top: 0;
+    left: 0; */
+}
+
+.CourseValues:hover,
+.CourseValuesChart:hover {
+	/* border: 3px solid rgba(220, 134, 54, 0.462); */
+	border: 1px solid #555;
+}
+
+.CourseChart {
+	display: flex;
+	justify-content: space-between;
+	width: fit-content;
+	width: 100%;
+	min-width: 900px;
+	padding: 0 10px;
+}
+
+.pass,
+.fail,
+.pending,
+.YES,
+.NO {
+	border: none;
+	cursor: none;
+	padding: 2px 12px;
+	border-radius: 5px;
+	color: #27a527;
+	background-color: #d1f3d1c7;
+	font-weight: 700;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.fail,
+.NO {
+	color: brown;
+	background-color: #f3d5d1c7;
+}
+
+.pending {
+	color: darkgoldenrod;
+	background-color: #f3e8d1c7;
+}
+
+.passIndicator {
+	color: #27a527;
+}
+
+.failIndicator {
+	color: brown;
+}
+
+.pendingIndicator {
+	color: darkgoldenrod;
+}
+
+.FilterButton {
+	padding: 2px 10px;
+	padding-right: 0;
+	color: #333;
+	background-color: #ddd;
+	border: none;
+	border-radius: 4px;
+	font-size: 13px;
+	margin-right: 3px;
+}
+
+.FilterButton > button {
+	padding: 2px;
+	margin: 0;
+	border-radius: 3px;
+	margin-left: 10px;
+}
+
+.FilterButton > button:hover {
+	background-color: #d8a096d7;
+}
+
+.LoadingScreen,
+.LoadingScreen2 {
+	position: absolute;
+	inset: 0;
+	/* background-color: rgba(0, 0, 0, 0.3); */
+	border-radius: 10px;
+	display: grid;
+	place-items: center;
+}
+
+.LoadingScreen2 {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ModuleSelectContainer {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+	.SectionTitle {
+		font-size: 1.4rem;
+		padding: 1rem;
+	}
+
+	.CourseFilters {
+		gap: 5px;
+	}
+
+	.CompanyItems > p {
+		font-size: 14px;
+	}
+
+	.CourseChart {
+		min-width: 1200px;
+	}
+
+	.CourseValues,
+	.CourseValuesChart {
+		padding: 20px 30px;
+		border: 2px solid transparent;
+	}
+
+	.CourseValues:hover,
+	.CourseValuesChart:hover {
+		border: 2px solid #555;
+	}
+
+	.CourseValues > p,
+	.CourseValuesChart > p,
+	.CourseValuesHeading {
+		font-size: 16px;
+	}
+
+	.CourseValuesValues > p {
+		font-size: 13px;
+	}
+
+	.CourseValuesValues > p > span {
+		font-size: 16px;
+	}
+
+	.ModuleSelectContainer {
+		width: 400px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.CourseFilters {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.CourseDetails {
+		grid-template-columns: 0.85fr 2.15fr;
+	}
+}
