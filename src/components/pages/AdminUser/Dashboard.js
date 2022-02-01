@@ -4,7 +4,7 @@ import { Assessment, Error } from '@material-ui/icons';
 import { Toaster } from 'react-hot-toast';
 import AdminDashboardHeader from '../../layout/AdminDashboardHeader/AdminDashboardHeader';
 import AdminSideNav from '../../layout/AdminSideNav/AdminSideNav';
-import Reports from './Reports';
+import Reports from './Reporting/Reports';
 import UserLogs from './UserLogs';
 
 const Dashboard = () => {
