@@ -11,10 +11,12 @@ const FeaturedCourses = () => {
 					<HomeCourseCard
 						image="courseOne"
 						title="Art of Coaching"
+						courseID="3"
 						description="Boost agent motivation by conveying the importance of their role in building lasting customer relationships."
 					/>
 					<HomeCourseCard
 						image="courseTwo"
+						courseID="4"
 						title="Social Media Mangement"
 						description="Excel your customer interactions on social media! This course teaches how to handle customers on various social channels."
 					/>
