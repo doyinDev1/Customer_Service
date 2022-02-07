@@ -1,14 +1,18 @@
 import classes from './UserHeader.module.css';
 import Logo from '../../../images/logo.png';
 // import LoremLogo from '../../../images/loremexcellentiam_logo.jpg';
-// import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { AccountCircleRounded } from '@material-ui/icons';
 
 const UserHeader = () => {
-	// const history = useHistory();
+	const navigate = useNavigate();
+	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
 
 	const onLogout = () => {
 		toast.success('Successfully logged out!');
+		sessionStorage.removeItem('rpUser');
+		navigate('/');
 	};
 
 	return (
@@ -22,6 +26,10 @@ const UserHeader = () => {
 				<img src={LoremLogo} alt="loremexcellentiam" />
 			</div> */}
 			<div className={classes.NavItems}>
+				<div className={classes.UserInfo}>
+					<AccountCircleRounded />
+					<h6>{userInfo.name}</h6>
+				</div>
 				<button onClick={onLogout}>Log Out</button>
 			</div>
 		</nav>

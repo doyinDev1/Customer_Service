@@ -42,5 +42,21 @@
 	color: #fff;
 	border: none;
 	outline: none;
+	margin-left: 1rem;
+}
+
+.UserInfo {
+	color: #fff;
+	display: flex;
+	align-items: center;
 	margin-left: auto;
+}
+
+.UserInfo svg {
+	margin-right: 5px;
+}
+
+.UserInfo h6 {
+	text-transform: capitalize;
+	margin-bottom: 0;
 }
