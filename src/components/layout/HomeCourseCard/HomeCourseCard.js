@@ -15,7 +15,7 @@ const HomeCourseCard = (props) => {
 			<div className={classes.CourseTextContainer}>
 				<h5>{props.title}</h5>
 				<p>{props.description}</p>
-				<Link to={`/learn/${props.courseID}`}
+				<Link to={`/learn`}
 				state={{ from: data, props }}
 				>View Course &#8250;</Link>
 			</div>
