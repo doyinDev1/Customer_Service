@@ -2,12 +2,36 @@
 import UserHeader from '../../layout/UserHeader/UserHeader';
 import classes from './Learn.module.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 // import { CloseOutlined } from '@material-ui/icons';
 import { Button } from 'react-bootstrap';
 import { Toaster } from 'react-hot-toast';
 import CourseCard from '../../layout/CourseCard/CourseCard';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { Config } from '../../../Config'
 
 const Learn = () => {
+	// const [loading, setLoading] = useState(false);
+	// const [error, setError] = useState('');
+	// const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
+	const [enrolledCourseOne, setEnrolledCourseOne] = useState([])
+	const [enrolledCourseTwo, setEnrolledCourseTwo] = useState([])
+
+
+	useEffect(() => {
+		axios
+			.post(`${Config.url.API_URL}/enrolled-courses`, { userID: 2 })
+			.then((res) => {
+				setEnrolledCourseOne(res.data?.enrolledCourses[0]);
+				setEnrolledCourseTwo(res.data?.enrolledCourses[1]);
+			})
+			.catch((err) => {
+				const errMsg = err?.response?.data?.message
+				toast.error(errMsg);
+			});
+	}, [])
+
 	return (
 		<>
 			<UserHeader />
@@ -18,9 +42,8 @@ const Learn = () => {
 				<div className={classes.CourseContainer}>
 					<CourseCard
 						image="courseOne"
-						courseTitle="Course One"
-						courseDescription="The Art of Coaching course will equip you with tools to develop your coaching skills and
-						work towards becoming the sort of leader that people would choose to be led by."
+						courseTitle={enrolledCourseOne?.course_name}
+						courseDescription={enrolledCourseOne?.course_description}
 						courseID="3"
 						courseFor="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed libero non augue maximus laoreet. Mauris maximus elit eu lacus cursus facilisis. Pellentesque eu elit odio. Integer ac egestas erat. Mauris fringilla ullamcorper tincidunt. Phasellus id libero volutpat, faucibus justo non, finibus metus. Phasellus suscipit leo vel odio tempus rhoncus. Nam semper lacus vel lacus interdum venenatis. Nunc facilisis dolor quis lectus pharetra condimentum. Nulla facilisi. Duis rutrum commodo est eget tristique. Sed sollicitudin quam diam, luctus aliquet metus suscipit sed. Maecenas ornare dapibus lectus, id cursus arcu tempus id. Etiam diam elit, vulputate eget sollicitudin a, maximus id erat. Phasellus volutpat malesuada metus ac semper. Nam luctus, quam rhoncus eleifend pulvinar, odio turpis varius nisl, sed molestie tortor mauris quis felis. Aliquam id nulla sit amet risus malesuada commodo at vel metus. Etiam sed malesuada magna. Donec eget malesuada augue. Proin sit amet consequat tellus. Donec vel interdum velit. Integer tempor lacus vel eros lobortis, ut porttitor orci aliquet. Nunc porta fermentum sapien, eget venenatis orci sodales quis. Ut ullamcorper augue nunc, in suscipit nulla finibus et. Mauris efficitur orci vel efficitur elementum"
 						list={[
@@ -39,9 +62,8 @@ const Learn = () => {
 					/>
 					<CourseCard
 						image="courseTwo"
-						courseTitle="Course Two"
-						courseDescription="The Art of Coaching course will equip you with tools to develop your coaching skills and
-						work towards becoming the sort of leader that people would choose to be led by."
+						courseTitle={enrolledCourseTwo?.course_name}
+						courseDescription={enrolledCourseTwo?.course_description}
 						courseID="4"
 						courseFor="This course will improve your ability to influence people in situations where you cannot use formal authority. You will learn about effective ways to build, develop, and sustain a power base in your organization. You will also learn influence tactics that enable you to be more persuasive and influential in working with your superiors, peers, and even subordinates. In addition, you will learn how to build and maintain high-quality relationships to further maximize your informal power and ability to influence others. Importantly, you will distinguish between influence and manipulation and learn how to protect yourself from the unwanted influence of others. The influence strategies you learn in this course will make you a more confident and influential leader, presenter, and decision-maker. You will more effective in pitching business ideas to your superiors, influencing customers, and building coalitions across stakeholders. This course will not only give you strategic guidance on how to develop and maintain your network for influence and power, but we will also equip you with specific tactics and strategies that are proven to work for gaining power and influencing people."
 						list={[

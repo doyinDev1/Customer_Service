@@ -63,6 +63,7 @@ function UserForm() {
 					name: res.data.data[0].name,
 					email: res.data.data[0].email,
 					employee_id: res.data.data[0].employee_id,
+					token: res.data.data[0].token,
 				});
 				sessionStorage.setItem('rpUser', userData);
 				toast.success('Login Successfully');
@@ -96,6 +97,7 @@ function UserForm() {
 				toast.success('Login Successfully');
 				navigate('/admin-dashboard');
 				// setLoading(false);
+				console.log((userData))
 			})
 			.catch((err) => {
 				// console.log(err);
@@ -106,7 +108,6 @@ function UserForm() {
 				setLoading(false);
 			});
 	};
-
 	return (
 		<>
 			<section>

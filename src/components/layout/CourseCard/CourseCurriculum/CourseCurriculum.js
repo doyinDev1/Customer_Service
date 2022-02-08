@@ -34,7 +34,6 @@ return (
 							/>
           </Modal.Body>
         </Modal>
-        {/* The%20Power%20To%20Make%20A%20Difference/A%20Powerful%20Word */}
       </div>
     </div>
   )

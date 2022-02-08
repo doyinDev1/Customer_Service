@@ -30,7 +30,7 @@ const ViewCourse = () => {
 						tabLabels={['Course Description', 'Curriculum']}				
 					/>
 					{pageKey === 0 && <CourseDescription location={location.state.props}/>}
-					{pageKey === 1 && <CourseCurriculum location={location.state.props} />}
+					{pageKey === 1 && <CourseCurriculum />}
 				</div>
 			</section>
 		</>
