@@ -12,7 +12,7 @@ const UserHeader = () => {
 	const onLogout = () => {
 		toast.success('Successfully logged out!');
 		sessionStorage.removeItem('rpUser');
-		navigate('/');
+		navigate('/login');
 	};
 
 	return (
