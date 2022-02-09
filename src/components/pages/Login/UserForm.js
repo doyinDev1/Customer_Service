@@ -97,7 +97,7 @@ function UserForm() {
 				toast.success('Login Successfully');
 				navigate('/admin-dashboard');
 				// setLoading(false);
-				console.log((userData))
+				console.log(userData);
 			})
 			.catch((err) => {
 				// console.log(err);
