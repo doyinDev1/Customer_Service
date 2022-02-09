@@ -52,6 +52,44 @@
 	padding: 2rem 3.2rem;
 }
 
+@media only screen and (max-width: 900px) {
+	.MainSection {
+		margin: 1rem;
+	}
+
+	.CourseFor {
+		width: 50%;
+	}
+
+	.CourseForText {
+		font-size: 15px;
+		line-height: 1.7;
+	}
+
+	.CourseImage {
+		height: 300px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.HeadingSection {
+		flex-direction: column-reverse;
+	}
+
+	.CourseFor {
+		width: 100%;
+		text-align: center;
+	}
+
+	.CourseImage {
+		width: 100%;
+	}
+
+	.PageHeader {
+		margin-top: 10px;
+	}
+}
+
 @media only screen and (max-width: 481px) {
 	.PageHeader {
 		font-size: 18px;
@@ -61,5 +99,9 @@
 	}
 	.CourseContainer {
 		padding: 1rem 0;
+	}
+
+	.MainSection {
+		margin: 5px;
 	}
 }

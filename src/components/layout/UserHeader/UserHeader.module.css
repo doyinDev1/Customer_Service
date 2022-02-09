@@ -60,3 +60,10 @@
 	text-transform: capitalize;
 	margin-bottom: 0;
 }
+
+@media only screen and (max-width: 600px) {
+	.UserInfo h6 {
+		font-size: 14px;
+		margin-right: auto;
+	}
+}

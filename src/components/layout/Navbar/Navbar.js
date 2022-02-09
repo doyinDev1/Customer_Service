@@ -4,6 +4,7 @@ import classes from './Navbar.module.css';
 import Navitem from '../Navitem/NavItem';
 
 const CustomNavbar = () => {
+	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
 	return (
 		<Navbar className={classes.Navbar}>
 			<Container className={classes.NavBrandContainer}>
@@ -17,7 +18,8 @@ const CustomNavbar = () => {
 			<div className={classes.NavContainer}>
 				<Container>
 					<Nav className={classes.Nav}>
-						<Navitem route="/login" label="Login" />
+						{!userInfo && <Navitem route="/login" label="Login" />}
+						{userInfo && <Navitem route="/learn" label="My Account" />}
 					</Nav>
 					{/* </Navbar.Collapse> */}
 				</Container>

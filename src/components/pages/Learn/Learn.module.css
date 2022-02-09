@@ -128,4 +128,8 @@ ul li {
 	.AssessmentInfo {
 		margin: 0;
 	}
+
+	.MainSection {
+		margin: 5px;
+	}
 }

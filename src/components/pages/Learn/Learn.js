@@ -12,25 +12,7 @@ import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 import CustomSpinner from '../../layout/CustomSpinner/CustomSpinner';
 
 const Learn = () => {
-	// const [loading, setLoading] = useState(false);
-	// const [error, setError] = useState('');
-	// const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
-
 	const { status, data } = useFecthEnrolledCourses();
-
-	// useEffect(() => {
-	// 	axios
-	// 		.post(`${Config.url.API_URL}/enrolled-courses`, { userID: 2 })
-	// 		.then((res) => {
-	// 			// console.log(res);
-	// 			setEnrolledCourseOne(res.data?.enrolledCourses[0]);
-	// 			setEnrolledCourseTwo(res.data?.enrolledCourses[1]);
-	// 		})
-	// 		.catch((err) => {
-	// 			const errMsg = err?.response?.data?.message;
-	// 			toast.error(errMsg);
-	// 		});
-	// }, []);
 
 	return (
 		<>
