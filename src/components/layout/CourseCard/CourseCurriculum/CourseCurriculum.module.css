@@ -1,30 +1,31 @@
 .CourseCurriculum {
-  padding-top: 3rem;
+	padding-top: 3rem;
 }
 
 .CourseOverviewCard {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .ModuleName {
-  background: transparent;
-  outline: none;
-  border: none;
-  font-weight: 400;
-  font-size: 16px;
-  background-color: var(--color-green);
-  padding: 1rem 8px;
-  margin-bottom: 3px;
-  text-align: left;
-  transition: all ease-in-out 0.4s;
-  color: #fff;
+	background: transparent;
+	outline: none;
+	border: none;
+	font-weight: 400;
+	font-size: 16px;
+	background-color: var(--color-green);
+	padding: 1rem 8px;
+	margin-bottom: 3px;
+	text-align: left;
+	transition: all ease-in-out 0.4s;
+	color: #fff;
+	text-transform: capitalize;
 }
 
 .ActiveModule {
-  background-color: var(--color-lightBlue);
-  color: #fff;
+	background-color: var(--color-lightBlue);
+	color: #fff;
 }
 
 .ModuleName:hover {
-  background-color: var(--color-primary);
+	background-color: var(--color-primary);
 }
