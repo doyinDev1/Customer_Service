@@ -31,7 +31,7 @@ const CourseCurriculum = (props) => {
 					</Modal.Header>
 					<Modal.Body>
 						<Iframe
-							url={`https://customerservice.roleplaycareers.com/course/Common%20Email%20Complaints/story.html?module_id=${props.modules[0].module_id}token=${userInfo.token}`}
+							url={`https://customerservice.roleplaycareers.com/course/Common%20Email%20Complaints/story.html?module_id=${props.modules[0].module_id}&token=${userInfo.token}`}
 							// url={`https://learningplatform.sandbox.9ijakids.com/ModuleFolders/${urlLinks}/Going%20The%20Extra%20Mile/story.html`}
 							// position="absolute"
 							width="95%"
