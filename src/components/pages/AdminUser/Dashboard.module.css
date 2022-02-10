@@ -6,11 +6,11 @@
 	min-height: 100vh;
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
 	.PageWrapper {
 		padding-left: 300px;
 	}
-}
+} */
 
 .Reports {
 	margin: 15px;

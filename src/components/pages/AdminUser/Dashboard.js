@@ -34,13 +34,13 @@ const Dashboard = () => {
 
 	return (
 		<>
-			<AdminDashboardHeader toggleSidebar={toggleSidebar} />
-			<AdminSideNav
+			<AdminDashboardHeader setCurrentPage={setCurrentPage} pages={pages} />
+			{/* <AdminSideNav
 				isOpen={isOpen}
 				setIsOpen={setIsOpen}
 				setCurrentPage={setCurrentPage}
 				pages={pages}
-			/>
+			/> */}
 			<div className={classes.PageWrapper}>
 				{pages.map((page, index) =>
 					currentPage === index ? <div key={index}>{page.page}</div> : ''

@@ -9,7 +9,7 @@ export const useFecthEnrolledCourses = () => {
 	const fetchUserCourses = async () => {
 		try {
 			const { data } = await axios.post(`${Config.url.API_URL}/enrolled-courses`, {
-				userID: 2,
+				token: userInfo.token,
 			});
 
 			const userCourses = data.enrolledCourses.map((course, index) => {
