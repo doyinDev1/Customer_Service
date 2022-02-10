@@ -2,18 +2,18 @@
 import UserHeader from '../../layout/UserHeader/UserHeader';
 import classes from './Learn.module.css';
 import { Link } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
 // import { CloseOutlined } from '@material-ui/icons';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap'
 import { Toaster } from 'react-hot-toast';
 import CourseCard from '../../layout/CourseCard/CourseCard';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 import CustomSpinner from '../../layout/CustomSpinner/CustomSpinner';
 
 const Learn = () => {
 	const { status, data } = useFecthEnrolledCourses();
-
+	const checkAssesment = data?.enrolledCourses.every(c => c.modules_completed === c.no_of_modules);
 	return (
 		<>
 			<UserHeader />
@@ -38,6 +38,7 @@ const Learn = () => {
 								list={course.list}
 								courseImage={course.courseImage}
 							/>
+
 						))}
 				</div>
 
@@ -51,8 +52,18 @@ const Learn = () => {
 								assessment
 							</p>
 							<div className={classes.ButtonContainer}>
-								<Link to="/">Take Assessment</Link>
-								<Button>Download Certificate</Button>
+								{checkAssesment === false ?
+									<Button variant='success'
+										disabled={!checkAssesment}
+									>
+										Take Assessment
+									</Button> :
+									<Link to="/">Take Assessment</Link>
+								}
+								{' '}
+								<Button
+									disabled={true}
+								>Download Certificate</Button>
 							</div>
 						</div>
 					</div>
