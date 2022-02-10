@@ -11,6 +11,28 @@
 	/* flex-wrap: wrap; */
 }
 
+.DownloadBtn {
+	/* border: none;
+	  outline: none; */
+	/* margin-left: 1rem; */
+	font-family: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 14px;
+	border-radius: 4px;
+	color: rgb(0, 145, 0);
+  }
+  
+  .DownloadBtn:hover {
+	color: #fff;
+	background-color: rgb(0, 145, 0);
+  }
+  
+  .DownloadBtn svg {
+	margin-right: 5px;
+  }
+  
+
 .Heading {
 	font-size: 18px;
 	color: var(--color-green);
@@ -35,8 +57,8 @@
 }
 
 .Assessment {
-	filter: grayscale(100);
-	pointer-events: none;
+	/* filter: grayscale(100);
+	pointer-events: none; */
 }
 .AssessmentInfo {
 	box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.15);
