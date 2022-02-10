@@ -7,7 +7,7 @@ import CourseCurriculum from '../../layout/CourseCard/CourseCurriculum/CourseCur
 import { useLocation } from 'react-router-dom';
 import { useModulesLoggedIn } from '../../../DataQueries/userHooks/fetch';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 const ViewCourse = () => {
 	const [pageKey, setPageKey] = useState(0);
 	const location = useLocation();
@@ -16,12 +16,13 @@ const ViewCourse = () => {
 	const { props } = location.state;
 	const { status, data } = useModulesLoggedIn(courseID);
 	const navigate = useNavigate();
+
 	return (
 		<>
 			<UserHeader />
 			<section className={classes.MainSection}>
 				<div className={classes.Back} onClick={() => navigate(-1)}>
-					<ArrowBackIcon  />
+					<ArrowBackIcon />
 					<span className={classes.BackSpan}>go back</span>
 				</div>
 				<div className={classes.CourseContainer}>
@@ -29,7 +30,7 @@ const ViewCourse = () => {
 						<div className={classes.CourseFor}>
 							<h4 className={classes.PageHeader}>{props.courseTitle}</h4>
 							<p className={classes.CourseForText}>{props.courseFor}</p>
-							{status === 'success' && <p>Completed: {eval(data.progress) * 100}%</p>}
+							{status === 'success' && <p>Completed: {data?.progress?.split('/')[0] * 100}%</p>}
 						</div>
 						<div className={classes.ImageContainer}>
 							<img className={classes.CourseImage} src={props.courseImage} alt="course" />
