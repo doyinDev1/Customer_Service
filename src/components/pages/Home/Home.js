@@ -6,7 +6,6 @@ import FeaturedCourses from './setions/FeaturedCourses';
 import { motion } from 'framer-motion';
 
 const Home = () => {
-	const MotionLink = motion(Link);
 	const variants = {
 		initial: { y: '100%', skewY: '7' },
 		animate: { y: 0, skewY: 0 },

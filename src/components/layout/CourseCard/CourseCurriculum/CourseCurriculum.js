@@ -8,8 +8,9 @@ import { CheckCircleRounded } from '@material-ui/icons';
 const CourseCurriculum = (props) => {
 	const [IframeModal, setIframeModal] = useState(false);
 	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
-	const progress =
-		(Number(props.progress?.split('/')[0]) / Number(props.progress?.split('/')[1])) * 100;
+	// const progress =
+	// 	(Number(props.progress?.split('/')[0]) / Number(props.progress?.split('/')[1])) * 100;
+	const progress = Number(props.progress?.split('/')[0]) * 100;
 
 	return (
 		<div className={classes.CourseCurriculum}>
