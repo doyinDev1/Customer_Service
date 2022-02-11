@@ -26,7 +26,7 @@ const Reports = () => {
 	// 	</section>
 	// );
 
-	const userInfo = JSON.parse(localStorage.getItem('ccAuth'));
+	// const userInfo = JSON.parse(localStorage.getItem('ccAuth'));
 	const [pageKey, setPageKey] = useState(
 		JSON.parse(localStorage.getItem('reportView'))
 			? JSON.parse(localStorage.getItem('reportView'))
@@ -36,7 +36,7 @@ const Reports = () => {
 	return (
 		<>
 			{/* <UserHeader /> */}
-			<h3 className={common.SectionTitle}>{userInfo.companyName} | Reporting</h3>
+			<h3 className={common.SectionTitle}> Reporting</h3>
 			<section className={common.SectionContainer}>
 				<ScrollableTabsButtonAuto
 					value={pageKey}

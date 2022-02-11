@@ -10,7 +10,7 @@ const CourseCurriculum = (props) => {
 	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
 	// const progress =
 	// 	(Number(props.progress?.split('/')[0]) / Number(props.progress?.split('/')[1])) * 100;
-	const progress = Number(props.progress?.split('/')[0]) * 100;
+	// const progress = Number(props.progress?.split('/')[0]) * 100;
 
 	return (
 		<div className={classes.CourseCurriculum}>
@@ -21,7 +21,8 @@ const CourseCurriculum = (props) => {
 					}}
 					className={classes.ModuleName}
 				>
-					{progress === 100 && <CheckCircleRounded />} {props.modules[0].module_title}{' '}
+					{props.modules[0].status === 'pass' && <CheckCircleRounded />}{' '}
+					{props.modules[0].module_title}{' '}
 				</button>
 
 				<Modal show={IframeModal} fullscreen onHide={() => setIframeModal(false)}>
@@ -32,7 +33,7 @@ const CourseCurriculum = (props) => {
 					</Modal.Header>
 					<Modal.Body>
 						<Iframe
-							url={`https://customerservice.roleplaycareers.com/course/Common%20Email%20Complaints/story.html?module_id=${props.modules[0].module_id}&token=${userInfo.token}`}
+							url={`${props.modules[0].path}?module_id=${props.modules[0].module_id}&token=${userInfo.token}`}
 							// url={`https://learningplatform.sandbox.9ijakids.com/ModuleFolders/${urlLinks}/Going%20The%20Extra%20Mile/story.html`}
 							// position="absolute"
 							width="95%"

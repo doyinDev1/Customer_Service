@@ -4,16 +4,25 @@ import classes from './Learn.module.css';
 import { Link } from 'react-router-dom';
 // import { CloseOutlined } from '@material-ui/icons';
 // import { Button } from 'react-bootstrap';
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 import { Toaster } from 'react-hot-toast';
 import CourseCard from '../../layout/CourseCard/CourseCard';
 // import toast from 'react-hot-toast';
 import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 import CustomSpinner from '../../layout/CustomSpinner/CustomSpinner';
+import { useState } from 'react';
+import AssessmentModal from '../../layout/AssessmentModal/AssessmentModal';
 
 const Learn = () => {
 	const { status, data } = useFecthEnrolledCourses();
-	const checkAssesment = data?.enrolledCourses.every(c => c.modules_completed === c.no_of_modules);
+	const checkAssesment = data?.enrolledCourses.every(
+		(c) => c.modules_completed === c.modules_count
+	);
+
+	const [showAssessmentModal, setAssessmentModal] = useState(false);
+
+	// console.log(data);
+
 	return (
 		<>
 			<UserHeader />
@@ -32,13 +41,12 @@ const Learn = () => {
 								courseTitle={course.course_name}
 								courseDescription={course.course_description}
 								completedModule={course.modules_completed}
-								numberOfModules={course.no_of_modules}
+								numberOfModules={course.modules_count}
 								courseID={course.course_id}
 								courseFor={course.courseFor}
 								list={course.list}
 								courseImage={course.courseImage}
 							/>
-
 						))}
 				</div>
 
@@ -52,21 +60,29 @@ const Learn = () => {
 								assessment
 							</p>
 							<div className={classes.ButtonContainer}>
-								{checkAssesment === false ?
-									<Button variant='success'
-										disabled={!checkAssesment}
-									>
-										Take Assessment
-									</Button> :
-									<Link to="/">Take Assessment</Link>
-								}
-								{' '}
 								<Button
-									disabled={true}
-								>Download Certificate</Button>
+									variant="success"
+									disabled={!checkAssesment}
+									onClick={() => setAssessmentModal(true)}
+									className={classes.AssessmentButton}
+								>
+									Take Assessment
+								</Button>
+
+								<Button disabled={!(data?.assessment[0]?.status === 'pass')}>
+									Download Certificate
+								</Button>
 							</div>
 						</div>
 					</div>
+				)}
+
+				{data?.assessment[0]?.path && (
+					<AssessmentModal
+						showAssessmentModal={showAssessmentModal}
+						assessment={data?.assessment[0]}
+						hideAssessmentModal={() => setAssessmentModal(false)}
+					/>
 				)}
 
 				{/* {loading && <Loader />}
