@@ -30,7 +30,9 @@ const ViewCourse = () => {
 						<div className={classes.CourseFor}>
 							<h4 className={classes.PageHeader}>{props.courseTitle}</h4>
 							<p className={classes.CourseForText}>{props.courseFor}</p>
-							{status === 'success' && <p>Completed: {data?.progress?.split('/')[0] * 100}%</p>}
+							{status === 'success' && (
+								<p>Completed: {data?.modules[0]?.status === 'pass' ? '100' : '0'}%</p>
+							)}
 						</div>
 						<div className={classes.ImageContainer}>
 							<img className={classes.CourseImage} src={props.courseImage} alt="course" />
