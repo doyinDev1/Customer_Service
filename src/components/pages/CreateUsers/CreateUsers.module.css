@@ -1,0 +1,275 @@
+.FormContainer {
+	width: 90vw;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.AddUserForm {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	/* align-items: center; */
+	margin: 0 auto;
+	padding: 4rem 0;
+	position: relative;
+	background: transparent;
+}
+
+.AddUserForm > h2 {
+	text-align: left;
+	font-size: 20px;
+	color: var(--color-green);
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid var(--color-green);
+	text-transform: uppercase;
+}
+
+.AddUserForm > button {
+	background-color: var(--color-green);
+	border: none;
+	outline: none;
+	color: #fff;
+	height: 50px;
+	padding: 0px 10px;
+	margin-top: 20px;
+}
+
+.ImportBtn {
+	text-align: center;
+	padding: 15px 5px;
+	background-color: var(--color-lightBlue);
+}
+
+.ImportBtn > button {
+	background-color: var(--color-green);
+	border: none;
+	outline: none;
+	color: #fff;
+	/* padding: 10px 50px; */
+	padding: 7px 10px;
+	font-size: 16px;
+	font-weight: 700;
+	border-radius: 3px;
+	cursor: pointer;
+	/* font-style: italic; */
+}
+
+.ModalTitle {
+	color: var(--color-darkBlue);
+	font-size: 18px;
+	font-weight: 500;
+	font-family: 'Russo One', sans-serif;
+	letter-spacing: 0.5px;
+}
+
+Form {
+	background-color: #fff;
+	padding: 1rem 2rem;
+	border-radius: 4px;
+	/* min-width: 50%; */
+	position: relative;
+}
+
+.Form h6 {
+	/* color: #faa600; */
+	color: var(--color-darkBlue);
+	padding: 5px;
+	font-size: 16px;
+	font-weight: 700;
+	padding-bottom: 5px;
+	border-bottom: 1px solid var(--color-darkBlue);
+}
+
+.InputContainer {
+	padding: 8px 12px;
+	/* background-color: #c5eef7; */
+	border-radius: 5px;
+	border: 2px solid var(--color-lightBlue);
+}
+
+.InputContainer label {
+	font-family: inherit;
+	margin-right: 1rem;
+	display: inline-block;
+	/* width: 30%; */
+	font-weight: 700;
+	font-size: 13px;
+	color: var(--color-darkBlue);
+}
+
+.InputContainer input {
+	font-family: inherit;
+	border: none;
+	/* border-bottom: 1px solid var(--color-darkBlue); */
+	padding: 5px;
+	width: 100%;
+	background: transparent;
+}
+
+.InputContainer input:focus {
+	outline: none;
+	background: transparent;
+}
+
+.Form button {
+	border: none;
+	outline: none;
+	font-family: inherit;
+	font-weight: 700;
+	text-transform: capitalize;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	background-color: var(--color-darkBlue);
+	color: #fff;
+	margin-top: 1.5rem;
+	width: 100%;
+}
+
+.Form button {
+	padding: 8px 16px;
+}
+
+.Form button:disabled {
+	background-color: #999;
+}
+
+.Form .Info {
+	background-color: var(--color-green);
+}
+
+.Form .ReUpload {
+	background-color: var(--color-lightBlue);
+}
+
+.InputBox {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	font-family: inherit;
+	width: 100%;
+}
+
+.InputBox label {
+	font-size: 13px;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.InputBox input {
+	outline: none;
+	border: none;
+	border: 1px solid var(--color-lightBlue);
+	border-radius: 3px;
+	padding: 1rem;
+	font-family: inherit;
+	font-size: 16px;
+	outline: none;
+	margin-bottom: 0;
+	width: 100%;
+	transition: all 0.4s ease-in-out;
+}
+
+.InputBox input:focus {
+	outline: none;
+	border: 2px solid var(--color-green);
+}
+
+.InputBox input::placeholder {
+	color: #bbb;
+	font-size: 13px;
+}
+
+.InputBox select {
+	font-family: inherit;
+	/* padding: 8px; */
+	padding: 1rem;
+	border-radius: 4px;
+	font-size: 13px;
+	border: 1px solid var(--color-lightBlue);
+	transition: all 0.4s ease-in-out;
+}
+
+.InputBox select:focus {
+	border: 2px solid var(--color-green);
+}
+
+.ErrorMessage {
+	font-size: 12px;
+	font-weight: 500;
+	margin-top: 5px;
+	margin-bottom: 0;
+	color: red;
+}
+
+.ValidationResult {
+	padding: 5px;
+	text-align: center;
+}
+
+.ValidationResult p {
+	font-weight: 700;
+	margin-bottom: 4px;
+	font-size: 12px;
+}
+
+.ValidationResult .Error {
+	color: rgb(212, 10, 10);
+}
+
+.ValidationResult .Success {
+	color: rgb(1, 156, 27);
+}
+
+/* .AddUserForm button {
+	background-color: var(--color-green);
+	border: none;
+	outline: none;
+	color: #fff;
+	margin-top: 10px;
+	padding: 1rem;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	border-radius: 3px;
+	cursor: pointer;
+} */
+
+.DownloadCSV {
+	padding: 1rem 0;
+}
+
+.DownloadCSV > button {
+	padding: 0 15px;
+	height: 35px;
+	margin-left: auto;
+	background-color: white;
+	color: var(--color-lightBlue);
+	border: 2px solid;
+	border-radius: 5px;
+	font-size: 13px;
+	font-weight: 600;
+	transition: all 0.4s ease-in-out;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.DownloadCSV > button:hover {
+	background-color: var(--color-lightBlue);
+	color: white;
+}
+
+@media screen and (min-width: 768px) {
+	.ModalTitle {
+		font-size: 22px;
+	}
+}
+/* @media only screen and (max-width: 600px) {
+	.AddUserForm {
+		margin: 3rem auto;
+	}
+
+	.Form {
+		padding: 4px;
+	}
+} */
