@@ -13,13 +13,12 @@
 // ];
 export const SampleData = [
 	{
-		employeeID: 'Demo Student1',
-		firstName: 'John',
-		lastName: 'Doe',
-		email: 'demo1@localhost.com',
-		gender: 'Male',
+		employee_id: 'Demo Student1',
+		name: 'John Doe',
 		grade: 'Banking Officer',
+		gender: 'Male',
 		location: 'Lagos',
-		role: 'Agent',
+		division: 'Agent',
+		email: 'demo1@localhost.com',
 	},
 ];

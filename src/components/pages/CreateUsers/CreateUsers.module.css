@@ -121,7 +121,7 @@ Form {
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 14px;
-	background-color: var(--color-darkBlue);
+	background-color: var(--color-green);
 	color: #fff;
 	margin-top: 1.5rem;
 	width: 100%;
