@@ -69,6 +69,7 @@ function UserForm() {
 				toast.success('Login Successfully');
 				navigate('/learn');
 				// setLoading(false);
+
 			})
 			.catch((err) => {
 				// console.log(err);
@@ -89,15 +90,14 @@ function UserForm() {
 			.then((res) => {
 				// console.log(res.data);
 				const userData = JSON.stringify({
-					name: res.data.data[0].name,
-					email: res.data.data[0].email,
-					employee_id: res.data.data[0].employee_id,
+					token: res.data.data[0].token,
+									
 				});
 				sessionStorage.setItem('rpAdmin', userData);
 				toast.success('Login Successfully');
 				navigate('/admin-dashboard');
 				// setLoading(false);
-				// console.log(userData);
+				// console.log(userData)
 			})
 			.catch((err) => {
 				// console.log(err);

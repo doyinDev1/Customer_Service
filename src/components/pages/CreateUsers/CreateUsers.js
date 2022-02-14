@@ -14,7 +14,7 @@ const CreateUsers = () => {
 	const [validatingFile, setValidatingFile] = useState(false);
 	const [validationErrors, setValidationErrors] = useState([]);
 	const [showModal, setShowModal] = useState(false);
-	const userInfo = JSON.parse(localStorage.getItem('ccAuth'));
+	// const userInfo = JSON.parse(localStorage.getItem('rpAdmin'));
 	const [validatedData, setValidatedData] = useState({
 		valid: [],
 		invalid: [],
@@ -27,20 +27,15 @@ const CreateUsers = () => {
 
 	const onAddUserFormSubmit = (data) => {
 		const myFormData = {
-			token: userInfo.token,
 			...data,
 		};
-console.log(myFormData)
-console.log(userInfo.token)
 		setLoading(true);
 
 		axios
 			.post(
 				// "https://afternoon-ridge-35420.herokuapp.com/https://learningplatform.sandbox.9ijakids.com/api/api.php/login",
 				`${Config.url.API_URL}/add-user`,
-				myFormData ,{
-					admin_token: userInfo.token
-				}
+				myFormData
 			)
 			.then((res) => {
 				toast.success(res.data.message);
@@ -59,7 +54,6 @@ console.log(userInfo.token)
 
 	return (
 		<>
-
 			<div className={classes.ImportBtn}>
 				<button onClick={() => setShowModal(true)}>Bulk Upload Users</button>
 			</div>

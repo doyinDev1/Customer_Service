@@ -16,7 +16,7 @@ import axios from 'axios';
 import { Config } from '../../../Config';
 
 const BulkUploadModal = (props) => {
-	const userInfo = JSON.parse(localStorage.getItem('ccAuth'));
+	const userInfo = JSON.parse(localStorage.getItem('rpAdmin'));
 	const inputRef = useRef(null);
 	const [uploadingFile, setUploadingFile] = useState(false);
 
