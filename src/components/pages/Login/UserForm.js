@@ -91,7 +91,6 @@ function UserForm() {
 				// console.log(res.data);
 				const userData = JSON.stringify({
 					token: res.data.data[0].token,
-									
 				});
 				sessionStorage.setItem('rpAdmin', userData);
 				toast.success('Login Successfully');

@@ -1,10 +1,7 @@
 import { Cancel, Clear, LibraryBooksOutlined } from '@material-ui/icons';
 import { useState } from 'react';
 import { Spinner, Table } from 'react-bootstrap';
-// import {
-// 	useFecthCompanyFilters,
-// 	useFetchCompanyCoursesReports,
-// } from '../../../DataQueries/companyHooks/fetch'
+import { useFecthFilters } from '../../../../DataQueries/adminHooks/fetch';
 import SelectDropDown from '../../../layout/DropDown/SelectDropDown';
 import classes from './Reporting.module.css';
 import common from '../../../../commonStyles/common.module.css';
@@ -31,8 +28,7 @@ const AllCoursesReport = () => {
 	// 		roleLabel,
 	// 		gradeLabel
 	// 	)
-	// const { status: companyFiltersStatus, data: companyFilters } =
-	// 	useFecthCompanyFilters()
+	const { status: filtersStatus, data: filters } = useFecthFilters();
 
 	const removeAllFilters = () => {
 		setGroupLabel('');
@@ -78,62 +74,38 @@ const AllCoursesReport = () => {
 			<div className={classes.InnerContainer}>
 				<div className={classes.CourseFilters}>
 					<SelectDropDown
-						legend="groups"
-						label={groupLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.groups.map((n) => n.groupName),
-						// 	]
-						// }
-						setFilterBy={setGroupLabel}
-						removeSpecificFilters={removeSpecificFilters}
-					/>
-					<SelectDropDown
 						legend="roles"
 						label={roleLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.roles.map((n) => n.roleName),
-						// 	]
-						// }
+						status={filters?.errorRes}
+						options={
+							filtersStatus === 'success' && ['None', ...filters?.roleName.map((n) => n.role_name)]
+						}
 						setFilterBy={setRoleLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
 					<SelectDropDown
 						legend="grades"
 						label={gradeLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.grades.map((n) => n.userGrade),
-						// 	]
-						// }
+						status={filters?.errorRes}
+						options={filtersStatus === 'success' && ['None', ...filters?.grade.map((n) => n.grade)]}
 						setFilterBy={setGradeLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
 					<SelectDropDown
 						legend="locations"
 						label={locationLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.locations.map((n) => n.location),
-						// 	]
-						// }
+						status={filters?.errorRes}
+						options={
+							filtersStatus === 'success' && ['None', ...filters?.locations.map((n) => n.location)]
+						}
 						setFilterBy={setLocationLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
 					<SelectDropDown
 						legend="gender"
 						label={genderLabel}
-						// status={companyFilters?.errorRes}
-						// options={companyFiltersStatus === 'success' && ['None', ...companyFilters?.genders]}
+						status={filters?.errorRes}
+						options={filtersStatus === 'success' && ['None', ...filters?.gender]}
 						setFilterBy={setGenderLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
