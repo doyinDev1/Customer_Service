@@ -69,6 +69,7 @@ function UserForm() {
 				toast.success('Login Successfully');
 				navigate('/learn');
 				// setLoading(false);
+
 			})
 			.catch((err) => {
 				// console.log(err);
@@ -95,7 +96,7 @@ function UserForm() {
 				toast.success('Login Successfully');
 				navigate('/admin-dashboard');
 				// setLoading(false);
-				// console.log(userData);
+				// console.log(userData)
 			})
 			.catch((err) => {
 				// console.log(err);
