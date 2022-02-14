@@ -72,11 +72,11 @@ const SelectDropDown = ({
 					options?.map((link, index) => (
 						<li key={index} onClick={handleSelect}>
 							{link}
-							{/* {legend === 'groups'
-								? link.groupName || link
-								: legend === 'roles'
+							{/* {legend === 'gender'
+								? link.gender || link
+								: legend === 'roleName'
 								? link.roleName || link
-								: legend === 'grades'
+								: legend === 'grade'
 								? link.userGrade || link
 								: legend === 'locations'
 								? link.location || link

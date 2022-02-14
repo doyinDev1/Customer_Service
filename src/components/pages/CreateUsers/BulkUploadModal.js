@@ -4,7 +4,7 @@ import { Modal, Spinner } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import { CheckCircle } from '@material-ui/icons';
 import { isValidEmail } from '../../helpers/validateExcel';
-import { ExportToExcel, exportToCSV } from '../../helpers/ExportToExcel'
+import { ExportToExcel, exportToCSV } from '../../helpers/ExportToExcel';
 import { currentDateTime } from '../../helpers/getCurrentTime';
 // import { useUploadBulkUsers } from '../../../DataQueries/companyHooks/mutation';
 import { SampleData } from './sampleData';
@@ -16,9 +16,10 @@ import axios from 'axios';
 import { Config } from '../../../Config';
 
 const BulkUploadModal = (props) => {
-	const userInfo = JSON.parse(localStorage.getItem('ccAuth'));
+	const userInfo = JSON.parse(sessionStorage.getItem('rpAdmin'));
 	const inputRef = useRef(null);
 	const [uploadingFile, setUploadingFile] = useState(false);
+	const [userFile, setUserFile] = useState(null);
 
 	const sendFileRequest = (data) => {
 		setUploadingFile(true);
@@ -42,7 +43,7 @@ const BulkUploadModal = (props) => {
 						tempError.FileErrorLog = allErrors[i];
 						exportErrors.push(tempError);
 					}
-					exportToCSV(exportErrors, `SSH_File-Upload-Error${currentTime}`);
+					exportToCSV(exportErrors, `Roleplay_File-Upload-Error${currentTime}`);
 				}
 				props.hideModal();
 			})
@@ -70,7 +71,7 @@ const BulkUploadModal = (props) => {
 		}
 
 		if (e.target.files[0]) {
-			// setUserFile(e.target.files[0]);
+			setUserFile(e.target.files[0]);
 			const reader = new FileReader();
 			reader.onloadstart = () => {
 				props.setValidatingFile(true);
@@ -159,8 +160,8 @@ const BulkUploadModal = (props) => {
 		const csvFile = convertSheetToFile(props.validatedData.valid);
 		// console.log(csvFile);
 		const formData = new FormData();
-		formData.append('upload_file', csvFile);
-		formData.append('token', userInfo.token);
+		formData.append('upload-file', csvFile);
+		formData.append('token', '23erdsaxcvf65yut9igh');
 
 		sendFileRequest(formData);
 	};
