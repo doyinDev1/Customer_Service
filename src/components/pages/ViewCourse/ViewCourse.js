@@ -1,25 +1,27 @@
 import UserHeader from '../../layout/UserHeader/UserHeader';
 import classes from './ViewCourse.module.css';
-import ScrollableTabsButtonAuto from './ScrollableTabsButtonAuto';
+// import ScrollableTabsButtonAuto from './ScrollableTabsButtonAuto';
 import { useState } from 'react';
 import CourseDescription from '../../layout/CourseDescription/CourseDescription';
 import CourseCurriculum from '../../layout/CourseCard/CourseCurriculum/CourseCurriculum';
-import { useLocation } from 'react-router-dom';
 import { useModulesLoggedIn } from '../../../DataQueries/userHooks/fetch';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Navbar from '../../layout/Navbar/Navbar';
+
 const ViewCourse = () => {
-	const [pageKey, setPageKey] = useState(0);
 	const location = useLocation();
 	const courseID = location.pathname.split('learn/')[1];
 
-	const { props } = location.state;
+	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
+
+	const { props } = location?.state;
 	const { status, data } = useModulesLoggedIn(courseID);
 	const navigate = useNavigate();
 
 	return (
 		<>
-			<UserHeader />
+			{userInfo ? <UserHeader /> : <Navbar />}
 			<section className={classes.MainSection}>
 				<div className={classes.Back} onClick={() => navigate(-1)}>
 					<ArrowBackIcon />
@@ -30,7 +32,7 @@ const ViewCourse = () => {
 						<div className={classes.CourseFor}>
 							<h4 className={classes.PageHeader}>{props.courseTitle}</h4>
 							<p className={classes.CourseForText}>{props.courseFor}</p>
-							{status === 'success' && (
+							{userInfo !== null && status === 'success' && (
 								<p>Completed: {data?.modules[0]?.status === 'pass' ? '100' : '0'}%</p>
 							)}
 						</div>
@@ -40,13 +42,33 @@ const ViewCourse = () => {
 					</div>
 				</div>
 				<div className={classes.CourseInformation}>
-					<ScrollableTabsButtonAuto
+					{/* <ScrollableTabsButtonAuto
 						value={pageKey}
 						setValue={setPageKey}
 						tabLabels={['Course Description', 'Curriculum']}
-					/>
-					{pageKey === 0 && <CourseDescription location={location.state.props} />}
-					{pageKey === 1 && <CourseCurriculum progress={data?.progress} modules={data?.modules} />}
+					/> */}
+					{userInfo && status === 'success' && (
+						<CourseCurriculum progress={data?.progress} modules={data?.modules} />
+					)}
+					{!userInfo && (
+						<>
+							<button
+								className={classes.LoginCTA}
+								onClick={() =>
+									navigate('/login', {
+										state: {
+											from: location,
+											props: location.state.props,
+										},
+									})
+								}
+							>
+								Login to View the Course Module
+							</button>
+						</>
+					)}
+
+					<CourseDescription location={location.state.props} />
 				</div>
 			</section>
 		</>

@@ -8,8 +8,12 @@ export const useFecthEnrolledCourses = () => {
 
 	const fetchUserCourses = async () => {
 		try {
+			// MAJOR TODO
+			// need another endpoint to fetch courses when user is not logged in
 			const { data } = await axios.post(`${Config.url.API_URL}/enrolled-courses`, {
-				token: userInfo.token,
+				token: userInfo?.token
+					? userInfo.token
+					: '02y5j2dz14dhz33003r1gg3bz0qw60gv6lf0ujv24eg2cjzma3nd15vgko534k625f30hanw2qi6v2l4',
 			});
 
 			const userCourses = data.enrolledCourses.map((course, index) => {
@@ -52,7 +56,7 @@ export const useModulesLoggedIn = (courseID) => {
 
 	const params = {
 		course_id: courseID,
-		token: userInfo.token,
+		token: userInfo?.token,
 	};
 
 	const fetchUserModules = async () => {

@@ -25,23 +25,13 @@ function App() {
 			<Routes>
 				<Route exact path="/" element={<Home />} />
 				{!isLoggedIn && <Route exact path="/login" element={<Login />} />}
-
+				<Route exact path="/learn/:courseID" element={<ViewCourse />} />
 				<Route
 					exact
 					path="/learn"
 					element={
 						<UserAuthRoute>
 							<Learn />
-						</UserAuthRoute>
-					}
-				/>
-
-				<Route
-					exact
-					path="/learn/:courseID"
-					element={
-						<UserAuthRoute>
-							<ViewCourse />
 						</UserAuthRoute>
 					}
 				/>

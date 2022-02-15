@@ -1,122 +1,134 @@
 .MainSection {
-  margin: 1rem 2rem;
-  padding: 2rem 1rem;
+	margin: 1rem 2rem;
+	padding: 2rem 1rem;
 }
 
 .PageHeader {
-  color: var(--color-primary);
-  font-weight: 700;
-  font-size: 28px;
-  text-transform: capitalize;
-  /* text-align: center; */
+	color: var(--color-primary);
+	font-weight: 700;
+	font-size: 28px;
+	text-transform: capitalize;
+	/* text-align: center; */
+}
+
+.LoginCTA {
+	outline: none;
+	border: none;
+	/* width: 100%; */
+	/* display: inline-block; */
+	padding: 5px 16px;
+	background-color: var(--color-blue);
+	font-family: inherit;
+	font-weight: 700;
+	color: #fff;
+	border-radius: 4px;
 }
 
 .HeadingSection {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
 }
 .Back {
-  padding-left: 14px;
-  padding-bottom: 20px;
-  color: var(--color-primary);
-  cursor: pointer;
-  display: inline-block;
+	padding-left: 14px;
+	padding-bottom: 20px;
+	color: var(--color-primary);
+	cursor: pointer;
+	display: inline-block;
 }
 
 .Back:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .BackSpan {
-  font-size: 15px;
+	font-size: 15px;
 }
 .CourseFor {
-  max-width: 100%;
-  width: 60%;
-  margin-right: auto;
+	max-width: 100%;
+	width: 60%;
+	margin-right: auto;
 }
 
 .CourseForText {
-  line-height: 1.75;
+	line-height: 1.75;
 }
 
 .CourseContainer {
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  padding: 5px 1rem;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	padding: 5px 1rem;
 }
 
 .CourseImage {
-  border-radius: 10px;
-  height: max-content;
-  max-height: 50vh;
-  /* height: 300px; */
-  width: 100%;
-  object-fit: cover;
+	border-radius: 10px;
+	height: max-content;
+	max-height: 50vh;
+	/* height: 300px; */
+	width: 100%;
+	object-fit: cover;
 }
 
 .CourseInformation {
-  padding-top: 2rem;
+	padding-top: 2rem;
 }
 
 .CourseDescription {
-  margin: 1rem 2rem;
-  padding: 2rem 3.2rem;
+	margin: 1rem 2rem;
+	padding: 2rem 3.2rem;
 }
 
-
 @media only screen and (max-width: 900px) {
-  .MainSection {
-    margin: 1rem;
-  }
+	.MainSection {
+		margin: 1rem;
+	}
 
-  .CourseFor {
-    width: 50%;
-  }
+	.CourseFor {
+		width: 50%;
+	}
 
-  .CourseForText {
-    font-size: 15px;
-    line-height: 1.7;
-  }
+	.CourseForText {
+		font-size: 15px;
+		line-height: 1.7;
+	}
 
-  .CourseImage {
-    height: 300px;
-  }
+	.CourseImage {
+		height: 300px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
-  .HeadingSection {
-    flex-direction: column-reverse;
-  }
+	.HeadingSection {
+		flex-direction: column-reverse;
+	}
 
-  .CourseFor {
-    width: 100%;
-    text-align: center;
-  }
+	.CourseFor {
+		width: 100%;
+		text-align: center;
+	}
 
-  .CourseImage {
-    width: 100%;
-  }
+	.CourseImage {
+		width: 100%;
+	}
 
-  .PageHeader {
-    margin-top: 10px;
-  }
+	.PageHeader {
+		margin-top: 10px;
+	}
 }
 
 @media only screen and (max-width: 481px) {
-  .PageHeader {
-    font-size: 18px;
-  }
-  .CourseImage {
-    height: auto;
-  }
-  .CourseContainer {
-    padding: 1rem 0;
-  }
+	.PageHeader {
+		font-size: 18px;
+	}
+	.CourseImage {
+		height: auto;
+	}
+	.CourseContainer {
+		padding: 1rem 0;
+	}
 
-  .MainSection {
-    margin: 5px;
-  }
+	.MainSection {
+		margin: 5px;
+	}
 }
