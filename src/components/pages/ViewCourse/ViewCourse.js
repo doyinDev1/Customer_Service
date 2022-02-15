@@ -53,6 +53,7 @@ const ViewCourse = () => {
 					{!userInfo && (
 						<>
 							<button
+								className={classes.LoginCTA}
 								onClick={() =>
 									navigate('/login', {
 										state: {
@@ -62,7 +63,7 @@ const ViewCourse = () => {
 									})
 								}
 							>
-								Login to View the Module
+								Login to View the Course Module
 							</button>
 						</>
 					)}

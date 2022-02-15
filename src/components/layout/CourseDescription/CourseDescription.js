@@ -11,7 +11,7 @@ const CourseDescription = (props) => {
 				<div className={classes.ListCourse}>
 					<ul className={classes.UnorderedList}>
 						{listed.map((list, index) => (
-							<li key={list.index}>{list}</li>
+							<li key={list.list}>{list}</li>
 						))}
 					</ul>
 				</div>

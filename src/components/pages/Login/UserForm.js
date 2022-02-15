@@ -76,10 +76,12 @@ function UserForm() {
 				});
 				sessionStorage.setItem('rpUser', userData);
 				toast.success('Login Successfully');
+
+				// passing in the props here in case we need to redirect to the view course page
 				navigate(routePath, {
 					replace: true,
 					state: {
-						props: location.state.props,
+						props: location.state?.props ? location.state?.props : '',
 					},
 				});
 				// setLoading(false);
