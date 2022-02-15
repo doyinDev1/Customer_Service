@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { Config } from '../../../Config';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 
 const validationSchema = Yup.object().shape({
@@ -22,8 +22,17 @@ const adminValidationSchema = Yup.object().shape({
 
 function UserForm() {
 	const [loading, setLoading] = useState(false);
+	const location = useLocation();
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
+
+	// user path to navigate to after login
+	let routePath = location.state?.from?.pathname || '/';
+	console.log(location.state);
+
+	// if the user is coming from the home page
+	// redirect to learn page
+	if (routePath === '/') routePath = '/learn';
 
 	const {
 		register,
@@ -67,9 +76,13 @@ function UserForm() {
 				});
 				sessionStorage.setItem('rpUser', userData);
 				toast.success('Login Successfully');
-				navigate('/learn');
+				navigate(routePath, {
+					replace: true,
+					state: {
+						props: location.state.props,
+					},
+				});
 				// setLoading(false);
-
 			})
 			.catch((err) => {
 				// console.log(err);

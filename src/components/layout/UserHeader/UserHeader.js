@@ -1,7 +1,7 @@
 import classes from './UserHeader.module.css';
 import Logo from '../../../images/logo.png';
 // import LoremLogo from '../../../images/loremexcellentiam_logo.jpg';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AccountCircleRounded } from '@material-ui/icons';
 
@@ -17,9 +17,9 @@ const UserHeader = () => {
 
 	return (
 		<nav className={classes.UserHeader}>
-			<div className={classes.LogoContainer}>
+			<Link to="/" className={classes.LogoContainer}>
 				<img src={Logo} alt="Roleplay Services" className={classes.Logo} />
-			</div>
+			</Link>
 			{/* <h2>Learn</h2> */}
 			{/* <div className="LoremLogo">
 				<p>Powered By:</p>
