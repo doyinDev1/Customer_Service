@@ -9,6 +9,7 @@ import axios from 'axios';
 import { Config } from '../../../Config';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
+import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required('Your Email is required').email('Please enter a valid email'),
@@ -51,10 +52,15 @@ function UserForm() {
 		mode: 'onSubmit',
 	});
 
+
+	const { status, data: fetchedData } = useFecthEnrolledCourses();
+
+
 	const onUserFormSubmit = (data) => {
 		const myFormData = {
 			email: data.email,
 			employee_id: data.employee_id,
+			firstLogin: data.employee_id,
 		};
 
 		// console.log(data);
@@ -73,10 +79,10 @@ function UserForm() {
 					email: res.data.data[0].email,
 					employee_id: res.data.data[0].employee_id,
 					token: res.data.data[0].token,
+					firstLogin: fetchedData.firstLogin,
 				});
 				sessionStorage.setItem('rpUser', userData);
 				toast.success('Login Successfully');
-
 				// passing in the props here in case we need to redirect to the view course page
 				navigate(routePath, {
 					replace: true,

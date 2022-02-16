@@ -28,6 +28,7 @@ export const useFecthEnrolledCourses = () => {
 			return {
 				enrolledCourses: userCourses,
 				assessment: data?.assessment ? data?.assessment : [],
+				firstLogin: data?.first_login ? data?.first_login  : []
 			};
 		} catch (error) {
 			return {

@@ -1,0 +1,22 @@
+/* .ModalTitle {
+	font-weight: 700;
+	color: var(--color-darkBlue);
+} */
+
+.ModalTitle {
+	color: var(--color-darkBlue);
+	font-size: 18px;
+	font-weight: 500;
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: 0.5px;
+}
+.ModalBodyTitle{
+	font-family: 'Montserrat', sans-serif;
+
+}
+
+@media screen and (min-width: 768px) {
+	.ModalTitle {
+		font-size: 22px;
+	}
+}
