@@ -12,12 +12,28 @@ import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 import CustomSpinner from '../../layout/CustomSpinner/CustomSpinner';
 import { useState } from 'react';
 import AssessmentModal from '../../layout/AssessmentModal/AssessmentModal';
+import FirstLoginModal from '../../layout/FirstLoginModal/FirstLoginModal';
 
 const Learn = () => {
+	const userInfo = JSON.parse(sessionStorage.getItem('rpUser'));
+
 	const { status, data } = useFecthEnrolledCourses();
 	const checkAssesment = data?.enrolledCourses.every(
 		(c) => c.modules_completed === c.modules_count
 	);
+	const [firstLoginModal, setFirstLoginModal] = useState(
+		userInfo.firstLogin !== undefined ? userInfo.firstLogin : false
+	);
+
+	const onHideFirstLoginModal = () => {
+		const tempData = { ...userInfo };
+		tempData.firstLogin = false;
+		const updatedUserInfo = JSON.stringify(tempData);
+		sessionStorage.setItem('rpUser', updatedUserInfo);
+		setFirstLoginModal(false);
+	};
+
+
 
 	const [showAssessmentModal, setAssessmentModal] = useState(false);
 
@@ -26,7 +42,6 @@ const Learn = () => {
 	return (
 		<>
 			<UserHeader />
-
 			<section className={classes.MainSection}>
 				<h2 className={classes.PageHeader}>All Courses </h2>
 
@@ -89,6 +104,11 @@ const Learn = () => {
 				{error && <h6>{error}</h6>} */}
 			</section>
 			<Toaster />
+
+			{status === 'success' && data?.firstLogin === true && (
+				<FirstLoginModal showModal={firstLoginModal} hideModal={onHideFirstLoginModal} />
+		
+			)}
 		</>
 	);
 };

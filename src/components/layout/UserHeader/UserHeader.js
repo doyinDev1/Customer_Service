@@ -14,7 +14,7 @@ const UserHeader = () => {
 		sessionStorage.removeItem('rpUser');
 		navigate('/login');
 	};
-
+// console.log(userInfo)
 	return (
 		<nav className={classes.UserHeader}>
 			<Link to="/" className={classes.LogoContainer}>
