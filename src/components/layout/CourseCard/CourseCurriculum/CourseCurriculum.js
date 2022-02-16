@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from './CourseCurriculum.module.css';
 import { useState } from 'react';
 import Iframe from 'react-iframe';

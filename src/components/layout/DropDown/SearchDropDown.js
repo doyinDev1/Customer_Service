@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-// import { useFetchSearchedCandidates } from '../../../DataQueries/companyHooks/fetch'
+import { useFetchSearchedCandidates } from '../../../DataQueries/adminHooks/fetch';
 import classes from './DropDown.module.css';
 
 const SearchDropDown = ({ setUserID, setUserName }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [input, setInput] = useState('');
 
-	// const {
-	// 	status: searchedCandidatesStatus,
-	// 	data: searchedCandidates,
-	// 	isFetching,
-	// } = useFetchSearchedCandidates(input.trim())
+	const {
+		status: searchedCandidatesStatus,
+		data: searchedCandidates,
+		isFetching,
+	} = useFetchSearchedCandidates(input.trim());
 
 	const handleSearch = (e) => {
 		setInput(e.target.value);
@@ -38,11 +38,10 @@ const SearchDropDown = ({ setUserID, setUserName }) => {
 				className={classes.DropDownMenu}
 				style={{ display: input.length >= 1 && isOpen ? 'block' : 'none' }}
 			>
-				{/* {searchedCandidatesStatus === 'success' &&
-				searchedCandidates?.length >= 1 ? (
+				{searchedCandidatesStatus === 'success' && searchedCandidates?.length >= 1 ? (
 					searchedCandidates?.map((link, index) => (
-						<li key={index} onClick={() => handleSelect(link.userID)}>
-							{link.usersName}
+						<li key={index} onClick={() => handleSelect(link.user_id)}>
+							{link.name}
 						</li>
 					))
 				) : (
@@ -55,7 +54,7 @@ const SearchDropDown = ({ setUserID, setUserName }) => {
 							'No matches found'
 						)}
 					</li>
-				)} */}
+				)}
 			</ul>
 		</div>
 	);

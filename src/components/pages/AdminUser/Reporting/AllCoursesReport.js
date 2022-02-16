@@ -1,11 +1,11 @@
 import { Cancel, Clear, LibraryBooksOutlined } from '@material-ui/icons';
 import { useState } from 'react';
 import { Spinner, Table } from 'react-bootstrap';
-import { useFecthFilters } from '../../../../DataQueries/adminHooks/fetch';
+import { useFecthFilters, useFetchCoursesReports } from '../../../../DataQueries/adminHooks/fetch';
 import SelectDropDown from '../../../layout/DropDown/SelectDropDown';
 import classes from './Reporting.module.css';
 import common from '../../../../commonStyles/common.module.css';
-// import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
+import DataStatusIndicator from '../../../layout/DataStatusIndicator/DataStatusIndicator';
 // import { currentDateTime } from '../../../helpers/getCurrentTime'
 // import { exportAllCoursesReportData } from '../../../helpers/exportTableData'
 // import { ExportToExcel } from '../../../helpers/ExportToExcel'
@@ -14,40 +14,31 @@ import { IconButton } from '@mui/material';
 // import RenderDownloadXLSXButton from '../../../helpers/generateExcelFile'
 
 const AllCoursesReport = () => {
-	const [groupLabel, setGroupLabel] = useState('');
-	const [roleLabel, setRoleLabel] = useState('');
 	const [gradeLabel, setGradeLabel] = useState('');
 	const [locationLabel, setLocationLabel] = useState('');
 	const [genderLabel, setGenderLabel] = useState('');
 
-	// const { status: companyCoursesReportsStatus, data: companyCoursesReports } =
-	// 	useFetchCompanyCoursesReports(
-	// 		groupLabel,
-	// 		genderLabel,
-	// 		locationLabel,
-	// 		roleLabel,
-	// 		gradeLabel
-	// 	)
+	const { status: coursesReportsStatus, data: coursesReports } = useFetchCoursesReports(
+		genderLabel,
+		locationLabel,
+		gradeLabel
+	);
 	const { status: filtersStatus, data: filters } = useFecthFilters();
 
 	const removeAllFilters = () => {
-		setGroupLabel('');
-		setRoleLabel('');
 		setGradeLabel('');
 		setLocationLabel('');
 		setGenderLabel('');
 	};
 
 	const removeSpecificFilters = (filterType) => {
-		if (filterType === groupLabel) setGroupLabel('');
-		if (filterType === roleLabel) setRoleLabel('');
 		if (filterType === gradeLabel) setGradeLabel('');
 		if (filterType === locationLabel) setLocationLabel('');
 		if (filterType === genderLabel) setGenderLabel('');
 	};
 
 	const renderFilteringByTag = () => {
-		if (!groupLabel && !roleLabel && !gradeLabel && !locationLabel && !genderLabel) {
+		if (!gradeLabel && !locationLabel && !genderLabel) {
 			return ' ';
 		} else {
 			return (
@@ -58,7 +49,7 @@ const AllCoursesReport = () => {
 		}
 	};
 
-	const selectedfilters = [groupLabel, roleLabel, gradeLabel, locationLabel, genderLabel];
+	const selectedfilters = [gradeLabel, locationLabel, genderLabel];
 
 	const header = [
 		'Course Title',
@@ -73,16 +64,6 @@ const AllCoursesReport = () => {
 		<div className={classes.SubContainer}>
 			<div className={classes.InnerContainer}>
 				<div className={classes.CourseFilters}>
-					<SelectDropDown
-						legend="roles"
-						label={roleLabel}
-						status={filters?.errorRes}
-						options={
-							filtersStatus === 'success' && ['None', ...filters?.roleName.map((n) => n.role_name)]
-						}
-						setFilterBy={setRoleLabel}
-						removeSpecificFilters={removeSpecificFilters}
-					/>
 					<SelectDropDown
 						legend="grades"
 						label={gradeLabel}
@@ -129,7 +110,7 @@ const AllCoursesReport = () => {
 									</span>
 								)
 						)}
-						{(groupLabel || roleLabel || gradeLabel || locationLabel || genderLabel) && (
+						{(gradeLabel || locationLabel || genderLabel) && (
 							<Cancel
 								onClick={removeAllFilters}
 								style={{ color: '#777', fontSize: '17px', marginLeft: '10px' }}
@@ -140,17 +121,13 @@ const AllCoursesReport = () => {
 						<div className={common.TableExtras}>
 							<h3>
 								Total Count:{' '}
-								{/* {companyCoursesReportsStatus === 'loading' ? (
-									<Spinner />
-								) : (
-									companyCoursesReports?.length
-								)} */}
+								{coursesReportsStatus === 'loading' ? <Spinner /> : coursesReports?.length}
 							</h3>
 							<div className={common.TableInputs}>
 								{/* <input type='search' placeholder='Search' /> */}
 
 								{/* <RenderDownloadXLSXButton
-									list={companyCoursesReports}
+									list={coursesReports}
 									header={header}
 									fileName={`All Courses Report ${currentDateTime()}`}
 									loopRef='allCoursesReport'
@@ -167,33 +144,33 @@ const AllCoursesReport = () => {
 							</thead>
 
 							<tbody>
-								{/* {companyCoursesReportsStatus === 'success' &&
-									Array.isArray(companyCoursesReports) &&
-									companyCoursesReports.length >= 1 &&
-									companyCoursesReports?.map((report, index) => (
+								{coursesReportsStatus === 'success' &&
+									Array.isArray(coursesReports) &&
+									coursesReports.length >= 1 &&
+									coursesReports?.map((report, index) => (
 										<tr key={index}>
-											<td>{report.courseName}</td>
+											<td>{report.course_name}</td>
 											<td>{report.enrolled}</td>
 											<td>{report.complete}</td>
 											<td>{report.incomplete}</td>
 											<td>{report.averageSum ? report.averageSum : 0}</td>
 											<td>{report.averageRange ? report.averageRange : 0}</td>
 										</tr>
-									))} */}
+									))}
 							</tbody>
 						</Table>
 					</div>
-					{/* <DataStatusIndicator
-						status={companyCoursesReportsStatus}
-						dataNode1={companyCoursesReports}
-						dataNode2={companyCoursesReports}
+					<DataStatusIndicator
+						status={coursesReportsStatus}
+						dataNode1={coursesReports}
+						dataNode2={coursesReports}
 						Icon={LibraryBooksOutlined}
 						noDataMessage={
-							groupLabel || roleLabel || gradeLabel || locationLabel || genderLabel
+							gradeLabel || locationLabel || genderLabel
 								? 'Oops... Filters did not return any data. Try something else'
 								: 'No data found'
 						}
-					/> */}
+					/>
 				</div>
 			</div>
 		</div>

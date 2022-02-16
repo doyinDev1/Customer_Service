@@ -25,12 +25,12 @@ const Dashboard = () => {
 			Icon: Assessment,
 			page: <Reports />,
 		},
-		{
-			id: 2,
-			title: 'User Logs',
-			Icon: Error,
-			page: <UserLogs />,
-		},
+		// {
+		// 	id: 2,
+		// 	title: 'User Logs',
+		// 	Icon: Error,
+		// 	page: <UserLogs />,
+		// },
 		{
 			id: 3,
 			title: 'Add Users',

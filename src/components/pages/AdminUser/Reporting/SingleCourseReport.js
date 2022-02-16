@@ -3,14 +3,10 @@ import { useState, useEffect } from 'react';
 // import { Spinner, Table } from 'react-bootstrap'
 // import DonutChart from '../../layout/Charts/DonutChart'
 // import Bar from '../../layout/Charts/BarChart'
-// import {
-// 	useFecthCompanyFilters,
-// 	useFetchAssignmentCourses,
-// 	useFetchSingleCourseReport,
-// } from '../../../DataQueries/companyHooks/fetch';
+import { useFecthFilters } from '../../../../DataQueries/adminHooks/fetch';
+import { useFecthEnrolledCourses } from '../../../../DataQueries/userHooks/fetch';
 import SelectDropDown from '../../../layout/DropDown/SelectDropDown';
 import classes from './Reporting.module.css';
-// import common from '../../../commonStyles/common.module.css'
 // import Loader from '../../layout/Loader/Loader';
 // import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
 // import MuiPagination from '../../layout/TablePagination/MuiPagination'
@@ -24,66 +20,60 @@ import CourseUsersTable from './CourseUsersTable';
 import CourseModuleUsersTable from './CourseModuleUsersTable';
 
 const SingleCourseReport = () => {
-	const [courseNames, setCourseNames] = useState([]);
+	const [courseData, setCourseData] = useState([]);
 	const [courseLabel, setCourseLabel] = useState('');
-	const [groupLabel, setGroupLabel] = useState('');
-	const [roleLabel, setRoleLabel] = useState('');
 	const [gradeLabel, setGradeLabel] = useState('');
 	const [locationLabel, setLocationLabel] = useState('');
 	const [genderLabel, setGenderLabel] = useState('');
-	const [assignableCourses, setAssignableCourses] = useState([]);
+
 	const [courseModuleEngagementLabels, setCourseModuleEngagementLabels] = useState([]);
-	const [selectedCourseID, setSelectedCourseID] = useState(null);
+
+	const [selectedCourse, setSelectedCourse] = useState({
+		courseLabel: '',
+		courseID: '',
+	});
 	const [page, setPage] = useState(1);
 	const [rowsPerPage, setRowsPerPage] = useState(100);
 	const [showTableKey, setShowTableKey] = useState(0);
+	const { status: filtersStatus, data: filters } = useFecthFilters();
 
-	// const { status: assignmentCoursesStatus, data: assignmentCourses } = useFetchAssignmentCourses();
-	// const { status: companyFiltersStatus, data: companyFilters } = useFecthCompanyFilters();
+	const { status: coursesStatus, data: allCoursesData } = useFecthEnrolledCourses();
+
 	// const {
 	// 	isFetching,
 	// 	status: singleCourseReportStatus,
 	// 	data: singleCourseReport,
 	// } = useFetchSingleCourseReport(
 	// 	selectedCourseID,
-	// 	groupLabel,
+
 	// 	genderLabel,
 	// 	locationLabel,
-	// 	roleLabel,
+
 	// 	gradeLabel,
 	// 	page
 	// );
 
 	// let courseReportDetails = singleCourseReport?.courseDetails;
 
-	//extract company course names for rendering on filter dropdown
-	//set assignable courses for use when finding course ID from filter selection
-	// useEffect(() => {
-	// 	setCourseNames(
-	// 		assignmentCoursesStatus === 'success' &&
-	// 			Array.isArray(assignmentCourses) &&
-	// 			assignmentCourses
-	// 				?.filter((course) => course.enrolled === true)
-	// 				?.map((course) => course.courseName)
-	// 	);
-	// 	setAssignableCourses(
-	// 		assignmentCoursesStatus === 'success' &&
-	// 			Array.isArray(assignmentCourses) &&
-	// 			assignmentCourses?.filter((course) => course.enrolled === true)
-	// 	);
-	// }, [assignmentCoursesStatus, assignmentCourses]);
+	// extract company course names for rendering on filter dropdown
+	// set assignable courses for use when finding course ID from filter selection
+	useEffect(() => {
+		if (coursesStatus === 'success' && Array.isArray(allCoursesData.enrolledCourses))
+			setCourseData(allCoursesData.enrolledCourses);
+	}, [coursesStatus, allCoursesData]);
 
-	//set default course name and course ID
-	// useEffect(() => {
-	// 	// const randomCompanyCourse = courseNames && courseNames[0]
-	// 	const randomCompanyCourse =
-	// 		courseNames && courseNames[Math.floor(Math.random() * courseNames.length)];
-	// 	const randomCompanyCourseIDAsDefault =
-	// 		assignableCourses &&
-	// 		assignableCourses?.find((course) => course.courseName === randomCompanyCourse)?.courseID;
-	// 	setSelectedCourseID(randomCompanyCourseIDAsDefault);
-	// 	setCourseLabel(randomCompanyCourse);
-	// }, [courseNames, assignableCourses]);
+	// set default course name and course ID
+	useEffect(() => {
+		// const randomCompanyCourse = courseNames && courseNames[0]]
+		if (courseData.length > 0) {
+			const defaultCourse = courseData && courseData[0];
+
+			setSelectedCourse({
+				courseID: defaultCourse.course_id,
+				courseLabel: defaultCourse.course_name,
+			});
+		}
+	}, [courseData]);
 
 	// //create module number labels based on report array length
 	// useEffect(() => {
@@ -96,8 +86,6 @@ const SingleCourseReport = () => {
 
 	//remove all filters or filter labels at once
 	const removeAllFilters = () => {
-		setGroupLabel('');
-		setRoleLabel('');
 		setGradeLabel('');
 		setLocationLabel('');
 		setGenderLabel('');
@@ -105,8 +93,6 @@ const SingleCourseReport = () => {
 
 	//remove filters on at a time based on type
 	const removeSpecificFilters = (filterType) => {
-		if (filterType === groupLabel) setGroupLabel('');
-		if (filterType === roleLabel) setRoleLabel('');
 		if (filterType === gradeLabel) setGradeLabel('');
 		if (filterType === locationLabel) setLocationLabel('');
 		if (filterType === genderLabel) setGenderLabel('');
@@ -114,7 +100,7 @@ const SingleCourseReport = () => {
 
 	//show 'Filterng By' text only when there is atleast on filters/filter labels applied
 	const renderFilteringByTag = () => {
-		if (!groupLabel && !roleLabel && !gradeLabel && !locationLabel && !genderLabel) {
+		if (!gradeLabel && !locationLabel && !genderLabel) {
 			return ' ';
 		} else {
 			return (
@@ -126,14 +112,20 @@ const SingleCourseReport = () => {
 	};
 
 	//set filter types/labels into array for rendering as buttons
-	const selectedfilters = [groupLabel, roleLabel, gradeLabel, locationLabel, genderLabel];
+	const selectedfilters = [gradeLabel, locationLabel, genderLabel];
 
 	//set selected course ID from name find comparison on assignable courses
 	const getID = (courseName) => {
-		setSelectedCourseID(
-			assignableCourses?.find((course) => course.courseName === courseName)?.courseID
-		);
+		setSelectedCourse({
+			courseLabel: courseData?.find((course) => course.course_name === courseName)?.course_name,
+			courseID: courseData?.find((course) => course.course_name === courseName)?.course_id,
+		});
 	};
+
+	// extract courseName from courses array
+	const extractCourseName = () =>
+		coursesStatus === 'success' &&
+		allCoursesData.enrolledCourses.map((course) => course.course_name);
 
 	return (
 		<div className={classes.SubContainer}>
@@ -141,71 +133,37 @@ const SingleCourseReport = () => {
 				<div className={classes.SearchSelection}>
 					<SelectDropDown
 						legend="select a course"
-						label={courseLabel}
-						// status={assignmentCourses?.errorRes}
-						// options={assignmentCoursesStatus === 'success' && courseNames}
+						label={selectedCourse.courseLabel}
+						status={allCoursesData?.errorRes}
+						options={extractCourseName()}
 						setFilterBy={setCourseLabel}
 						getID={getID}
 					/>
 				</div>
 				<div className={classes.CourseFilters}>
 					<SelectDropDown
-						legend="groups"
-						label={groupLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.groups.map((n) => n.groupName),
-						// 	]
-						// }
-						setFilterBy={setGroupLabel}
-						removeSpecificFilters={removeSpecificFilters}
-					/>
-					<SelectDropDown
-						legend="roles"
-						label={roleLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.roles.map((n) => n.roleName),
-						// 	]
-						// }
-						setFilterBy={setRoleLabel}
-						removeSpecificFilters={removeSpecificFilters}
-					/>
-					<SelectDropDown
 						legend="grades"
 						label={gradeLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.grades.map((n) => n.userGrade),
-						// 	]
-						// }
+						status={filters?.errorRes}
+						options={filtersStatus === 'success' && ['None', ...filters?.grade.map((n) => n.grade)]}
 						setFilterBy={setGradeLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
 					<SelectDropDown
 						legend="locations"
 						label={locationLabel}
-						// status={companyFilters?.errorRes}
-						// options={
-						// 	companyFiltersStatus === 'success' && [
-						// 		'None',
-						// 		...companyFilters?.locations.map((n) => n.location),
-						// 	]
-						// }
+						status={filters?.errorRes}
+						options={
+							filtersStatus === 'success' && ['None', ...filters?.locations.map((n) => n.location)]
+						}
 						setFilterBy={setLocationLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
 					<SelectDropDown
 						legend="gender"
 						label={genderLabel}
-						// status={companyFilters?.errorRes}
-						// options={companyFiltersStatus === 'success' && ['None', ...companyFilters?.genders]}
+						status={filters?.errorRes}
+						options={filtersStatus === 'success' && ['None', ...filters?.gender]}
 						setFilterBy={setGenderLabel}
 						removeSpecificFilters={removeSpecificFilters}
 					/>
@@ -229,7 +187,7 @@ const SingleCourseReport = () => {
 									</span>
 								)
 						)}
-						{(groupLabel || roleLabel || gradeLabel || locationLabel || genderLabel) && (
+						{(gradeLabel || locationLabel || genderLabel) && (
 							<Cancel
 								onClick={removeAllFilters}
 								style={{ color: '#777', fontSize: '17px', marginLeft: '10px' }}
@@ -339,8 +297,6 @@ const SingleCourseReport = () => {
 								page={page}
 								rowsPerPage={rowsPerPage}
 								setRowsPerPage={setRowsPerPage}
-								groupLabel={groupLabel}
-								roleLabel={roleLabel}
 								gradeLabel={gradeLabel}
 								locationLabel={locationLabel}
 								genderLabel={genderLabel}
@@ -357,12 +313,10 @@ const SingleCourseReport = () => {
 								page={page}
 								rowsPerPage={rowsPerPage}
 								setRowsPerPage={setRowsPerPage}
-								groupLabel={groupLabel}
-								roleLabel={roleLabel}
 								gradeLabel={gradeLabel}
 								locationLabel={locationLabel}
 								genderLabel={genderLabel}
-								courseID={selectedCourseID}
+								courseID={selectedCourse.courseID}
 							/>
 						)}
 					</div>
