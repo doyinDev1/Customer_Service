@@ -12,7 +12,7 @@ const CustomNavbar = () => {
 					<img alt="Roleplay Services" src={Roleplay} className={classes.Logo} />
 				</Navbar.Brand>
 			</Container>
-
+{console.log(userInfo)}
 			{/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
 			{/* <Navbar.Collapse id="basic-navbar-nav"> */}
 			<div className={classes.NavContainer}>

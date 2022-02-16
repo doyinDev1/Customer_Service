@@ -1,0 +1,45 @@
+.Paragraph {
+	font-size: 14px;
+}
+
+.ContentContainer {
+	background-color:var(--color-vlightBlue);
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.ContentContainer h3 {
+	font-size: 20px;
+}
+
+.ContentContainer h6 {
+	font-size: 18px;
+	color: var(--color-green);
+}
+
+.FeatureBox {
+	display: flex;
+	margin-bottom: 1rem;
+	/* flex-wrap: wrap; */
+}
+
+.FeatureBox svg {
+	height: 3rem;
+	width: 3rem;
+	margin-right: 1rem;
+	fill: var(--color-green);
+}
+
+.ExitButton {
+	width: 100%;
+	margin: 8px 0;
+	text-align: center;
+
+	color: #fff;
+	background-color: var(--color-blue);
+	border: none;
+}
+
+.ExitButton:hover {
+	background-color: var(--color-green);
+}
