@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 import classes from './ViewUsers.module.css'
 import common from '../../../commonStyles/common.module.css'
-// import { useFetchAndSearchCompanyUsers } from '../../../DataQueries/companyHooks/fetch'
+import { useFetchAllUsers } from '../../../DataQueries/adminHooks/fetch'
 // import { useDeleteCompanyUser } from '../../../DataQueries/companyHooks/mutation'
 // import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
 import { DeleteOutline, Edit } from '@mui/icons-material'
@@ -10,14 +10,15 @@ import { IconButton } from '@mui/material'
 import EditUserModal from '../../layout/UserModals/EditUserModal'
 // import Swal from 'sweetalert2'
 import MuiPagination from '../../layout/TablePagination/MuiPagination'
-// import { currentDateTime } from '../../helpers/getCurrentTime'
-// import RenderDownloadXLSXButton from '../../helpers/generateExcelFile'
+import { currentDateTime } from '../../helpers/getCurrentTime'
+import RenderDownloadXLSXButton from '../../helpers/generateExcelFile'
 
 const ViewUsers = () => {
     const userInfo = JSON.parse(localStorage.getItem('rpAdmin'))
     const [page, setPage] = React.useState(1)
     const [rowsPerPage, setRowsPerPage] = React.useState(100)
     const [searchValue, setSearchValue] = React.useState('')
+    const { status: allUserStatus, data: allUserData, isFetching: isFetchingAllUsers } = useFetchAllUsers()
     // const {
     //     status,
     //     data: companyUsers,
@@ -79,8 +80,7 @@ const ViewUsers = () => {
     // Table header row and XLSX header row
     const header = [
         'Employee ID',
-        'First Name',
-        'Last Name',
+        'Name',
         'Email',
         'Gender',
         'Grade',
@@ -97,9 +97,8 @@ const ViewUsers = () => {
                 <div className={common.TableWrapper} style={{ margin: '0 10px' }}>
                     <div className={common.TableExtras}>
                         <h3>
-                            Total Count:{' '} 3
-                            {/* {status === 'loading' ? <Spinner /> : companyUsers?.users?.length} */}
-                            {/* {status === 'loading' ? <Spinner /> : 3} */}
+                            Total Count:{' '} 
+                            {allUserStatus === 'loading' ? <Spinner /> : allUserData?.length}
 
                         </h3>
                         <div className={common.TableInputs}>
@@ -109,12 +108,12 @@ const ViewUsers = () => {
                                 onChange={handleSearch}
                             />
 
-                            {/* <RenderDownloadXLSXButton
-                                list={companyUsers?.users}
+                            <RenderDownloadXLSXButton
+                                list={allUserData}
                                 header={header}
                                 fileName={`Employees Details ${currentDateTime()}`}
                                 loopRef='allCompanyEmployeeData'
-                            /> */}
+                            />
                         </div>
                     </div>
                     <Table className={common.Table} hover responsive>
@@ -124,170 +123,59 @@ const ViewUsers = () => {
                                 <th>Employee ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                {/* <th>Role</th> */}
                                 <th>Gender</th>
                                 <th>Grade</th>
                                 <th>Location</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {status === 'success' &&
-                                companyUsers?.users?.length >= 1 &&
-                                companyUsers?.users?.map((employee) => (
-                                    <tr key={employee.userEmail}>
+                            {allUserStatus === 'success' &&
+                                allUserData?.length >= 1 &&
+                                allUserData?.map((allUserData) => (
+                                    <tr key={allUserData.user_id}>
                                         <td>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => handleDeleteCompanyUser(employee)}>
+                                                // onClick={() => handleDeleteCompanyUser(employee)}
+                                                >
                                                 <DeleteOutline
                                                     style={{ fontSize: '17px', color: 'brown' }}
                                                 />
                                             </IconButton>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => onEditModal(employee)}>
+                                                // onClick={() => onEditModal(employee)}
+                                                >
                                                 <Edit
                                                     style={{
                                                         fontSize: '17px',
-                                                        color: 'var(--color-secondary)',
+                                                        color: 'var(--color-primary)',
                                                     }}
                                                 />
                                             </IconButton>
                                         </td>
-                                        <td>{employee.employeeID}</td>
+                                        <td>{allUserData.employee_id}</td>
                                         <td>
-                                            {employee.userFirstName} {employee.userLastname}
+                                            {allUserData.name}
                                         </td>
-                                        <td>{employee.userEmail}</td>
-                                        <td>{employee.userGrade}</td>
-                                        <td>{employee.userGender}</td>
-                                        <td>{employee.location}</td>
+                                        <td>{allUserData.email}</td>
+                                        <td>{allUserData.gender}</td>
+                                        <td>{allUserData.grade}</td>
+                                        <td>{allUserData.location}</td>
                                     </tr>
-                                ))} */}
-
-                            <tr>
-                                <td>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                    // onClick={() => handleDeleteCompanyUser(employee)}
-                                    >
-                                        <DeleteOutline
-                                            style={{ fontSize: '17px', color: 'brown' }}
-                                        />
-                                    </IconButton>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                        onClick={() => onEditModal("employee")}
-                                    >
-                                        <Edit
-                                            style={{
-                                                fontSize: '17px',
-                                                color: 'var(--color-primary)',
-                                            }}
-                                        />
-                                    </IconButton>
-                                </td>
-                                <td>{"ADA1"}</td>
-                                <td>
-                                    {"Adedoyin"} {"Oyebanji"}
-                                </td>
-                                <td>{"company@email.com"}</td>
-                                <td>{"Male"}</td>
-                                <td>{"78"}</td>
-                                <td>{"Lagos"}</td>
-
-                            </tr>
-
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                    // onClick={() => handleDeleteCompanyUser(employee)}
-                                    >
-                                        <DeleteOutline
-                                            style={{ fontSize: '17px', color: 'brown' }}
-                                        />
-                                    </IconButton>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                        onClick={() => onEditModal("employee")}
-                                    >
-                                        <Edit
-                                            style={{
-                                                fontSize: '17px',
-                                                color: 'var(--color-primary)',
-                                            }}
-                                        />
-                                    </IconButton>
-                                </td>
-                                <td>{"4PF"}</td>
-                                <td>
-                                    {"Mark"} {"Zuckerberg"}
-                                </td>
-                                <td>{"MarkZuck@twitter.com"}</td>
-                                <td>{"Male"}</td>
-                                <td>{"11"}</td>
-                                <td>{"Abuja"}</td>
-
-                            </tr>
-
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                    // onClick={() => handleDeleteCompanyUser(employee)}
-                                    >
-                                        <DeleteOutline
-                                            style={{ fontSize: '17px', color: 'brown' }}
-                                        />
-                                    </IconButton>
-                                    <IconButton
-                                        className={classes.ActionButton}
-                                        onClick={() => onEditModal("employee")}
-                                    >
-                                        <Edit
-                                            style={{
-                                                fontSize: '17px',
-                                                color: 'var(--color-primary)',
-                                            }}
-                                        />
-                                    </IconButton>
-                                </td>
-                                <td>{"AAA"}</td>
-                                <td>
-                                    {"Hanzo"} {"Hasashi"}
-                                </td>
-                                <td>{"chorister@9ijakids.com"}</td>
-                                <td>{"Female"}</td>
-                                <td>{"23"}</td>
-                                <td>{"Zambia"}</td>
-
-                            </tr>
-
-                        </tbody>
+                                ))}
+                        </tbody>                       
                     </Table>
 
-                    {/* {companyUsers?.users.length >= 1 && (
+                 {allUserData?.length >= 1 && (
 						<MuiPagination
 							page={page}
 							setPage={setPage}
 							rowsPerPage={rowsPerPage}
 							setRowsPerPage={setRowsPerPage}
-							count={companyUsers && companyUsers?.total}
+							count={allUserData && allUserData?.length}
 						/>
-					)} */}
-
-                    <MuiPagination
-                        page={page}
-                        setPage={setPage}
-                        rowsPerPage={rowsPerPage}
-                        setRowsPerPage={setRowsPerPage}
-                        count={5}
-                    />
+					)}                    
                 </div>
 
                 <p style={{ textAlign: 'center', marginTop: '10px' }}>

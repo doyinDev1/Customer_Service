@@ -103,7 +103,7 @@
     /* color: #777; */
     color: white;
     /* background-color: #f3e8d1c7; */
-    background-color: rgb(255, 145, 0);
+    background-color: var(--color-green);
     border-radius: 5px;
     border: none;
     outline: none;
