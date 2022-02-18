@@ -44,8 +44,8 @@ const Home = () => {
 						transition={{ duration: 0.5, ease: 'easeOut', delay: 0.5 }}
 					>
 						<p className={classes.Paragraph}>
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore modi suscipit
-							dolore cum rem mollitia blanditiis magnam minima.
+							There’s Nothing Better Than Getting Better.
+							Keep improving with our creative classes by watching, learning and discovering new ways to better at service delivery.
 						</p>
 						<Link to="/login" className={classes.LoginLink}>
 							Login

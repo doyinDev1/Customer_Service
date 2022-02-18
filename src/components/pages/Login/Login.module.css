@@ -42,9 +42,10 @@
 }
 
 .LoginTypes > p {
-	font-size: 18px;
+	font-size: 8px;
 	text-transform: capitalize;
 	color: #fff;
+	padding-top: 30px;
 }
 
 .LoginForms {
