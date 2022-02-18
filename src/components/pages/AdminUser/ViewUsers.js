@@ -3,18 +3,18 @@ import { Spinner, Table } from 'react-bootstrap'
 import classes from './ViewUsers.module.css'
 import common from '../../../commonStyles/common.module.css'
 import { useFetchAllUsers } from '../../../DataQueries/adminHooks/fetch'
-// import { useDeleteCompanyUser } from '../../../DataQueries/companyHooks/mutation'
+import { useDeleteRoleplayUser } from '../../../DataQueries/adminHooks/mutation'
 // import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
 import { DeleteOutline, Edit } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import EditUserModal from '../../layout/UserModals/EditUserModal'
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 import MuiPagination from '../../layout/TablePagination/MuiPagination'
 import { currentDateTime } from '../../helpers/getCurrentTime'
 import RenderDownloadXLSXButton from '../../helpers/generateExcelFile'
 
 const ViewUsers = () => {
-    const userInfo = JSON.parse(localStorage.getItem('rpAdmin'))
+    const adminInfo = JSON.parse(localStorage.getItem('rpAdmin'))
     const [page, setPage] = React.useState(1)
     const [rowsPerPage, setRowsPerPage] = React.useState(100)
     const [searchValue, setSearchValue] = React.useState('')
@@ -24,7 +24,7 @@ const ViewUsers = () => {
     //     data: companyUsers,
     //     isFetching,
     // } = useFetchAndSearchCompanyUsers(searchValue, page, rowsPerPage)
-    // const { deleteCompanyUser } = useDeleteCompanyUser()
+    const { deleteRoleplayUser } = useDeleteRoleplayUser();
     const [editModal, setEditModal] = React.useState(false)
     const [selectedUser, setSelectedUser] = React.useState(null)
 
@@ -42,40 +42,46 @@ const ViewUsers = () => {
         setSelectedUser({})
     }
 
-    // const handleDeleteCompanyUser = (user) => {
-    //     const params = {
-    //         userID: user.userID,
-    //         // userToken: user.usertoken,
-    //     }
+    const handleDeleteRoleplayUser = (user) => {
 
-    //     Swal.fire({
-    //         title: 'PLEASE CONFIRM!!!',
-    //         text: `Are you sure you want to delete: ${user.employeeID} ?`,
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: 'var(--color-lightBlue)',
-    //         cancelButtonColor: 'var(--color-secondary)',
-    //         confirmButtonText: 'YES',
-    //         cancelButtonText: 'NO',
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             // deleteCompanyUser(user.usertoken)
-    //             deleteCompanyUser(params)
-    //                 .then((res) => {
-    //                     Swal.fire('Deleted!', 'User Deleted Successfully.', 'success')
-    //                 })
-    //                 .catch((err) => {
-    //                     if (err.response && err.response.data) {
-    //                         Swal.fire({
-    //                             icon: 'error',
-    //                             title: 'Oops...',
-    //                             text: err.response.data.message,
-    //                         })
-    //                     }
-    //                 })
-    //         }
-    //     })
-    // }
+        const params = {
+            employee_id: user.employee_id,
+            name: user.name,
+            grade: user.grade,
+            gender: user.gender,
+            location: user.location,
+            division: user.division,
+            email: user.email,
+        }
+
+        Swal.fire({
+            title: 'PLEASE CONFIRM!!!',
+            text: `Are you sure you want to delete: ${user.name} ?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'var(--color-green)',
+            cancelButtonColor: 'var(--color-primary)',
+            confirmButtonText: 'YES',
+            cancelButtonText: 'NO',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // deleteRoleplayUser(user.usertoken)
+                deleteRoleplayUser(params)
+                    .then((res) => {
+                        Swal.fire('Deleted!', 'User Deleted Successfully.', 'success')
+                    })
+                    .catch((err) => {
+                        if (err.response && err.response.data) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: err.response.data.message,
+                            })
+                        }
+                    })
+            }
+        })
+    }
 
     // Table header row and XLSX header row
     const header = [
@@ -86,10 +92,11 @@ const ViewUsers = () => {
         'Grade',
         'Location',
     ]
+	const adminUser = JSON.parse(sessionStorage.getItem('rpAdmin'));
 
     return (
         <>
-
+{console.log(adminUser)}
             <h3 className={common.SectionTitle}>
                 All Users
             </h3>
@@ -131,12 +138,12 @@ const ViewUsers = () => {
                         <tbody>
                             {allUserStatus === 'success' &&
                                 allUserData?.length >= 1 &&
-                                allUserData?.map((allUserData) => (
-                                    <tr key={allUserData.user_id}>
+                                allUserData?.map((allUserDataa) => (
+                                    <tr key={allUserDataa.user_id}>
                                         <td>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                // onClick={() => handleDeleteCompanyUser(employee)}
+                                                onClick={() => handleDeleteRoleplayUser(allUserDataa)}
                                                 >
                                                 <DeleteOutline
                                                     style={{ fontSize: '17px', color: 'brown' }}
@@ -144,7 +151,7 @@ const ViewUsers = () => {
                                             </IconButton>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                // onClick={() => onEditModal(employee)}
+                                                onClick={() => onEditModal(allUserDataa)}
                                                 >
                                                 <Edit
                                                     style={{
@@ -154,14 +161,14 @@ const ViewUsers = () => {
                                                 />
                                             </IconButton>
                                         </td>
-                                        <td>{allUserData.employee_id}</td>
+                                        <td>{allUserDataa.employee_id}</td>
                                         <td>
-                                            {allUserData.name}
+                                            {allUserDataa.name}
                                         </td>
-                                        <td>{allUserData.email}</td>
-                                        <td>{allUserData.gender}</td>
-                                        <td>{allUserData.grade}</td>
-                                        <td>{allUserData.location}</td>
+                                        <td>{allUserDataa.email}</td>
+                                        <td>{allUserDataa.gender}</td>
+                                        <td>{allUserDataa.grade}</td>
+                                        <td>{allUserDataa.location}</td>
                                     </tr>
                                 ))}
                         </tbody>                       

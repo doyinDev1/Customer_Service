@@ -54,12 +54,14 @@ export const useFetchAllUsers = () => {
 		}
 	};
 	const { status, data, isFetching } = useQuery(
-		['companyUsers', adminUser],
+		['RoleplayUsers', adminUser],
 		() => fetchAllUsers(),
 		{
-			keepPreviousData: true,
-			refetchOnWindowFocus: false,
+			keepPreviousData: false,
+			refetchOnWindowFocus: true,
 		}
 	);
 	return { status, data, isFetching };
 };
+
+
