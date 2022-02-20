@@ -9,7 +9,7 @@
 	text-align: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 50px 20px;
+    padding: 40px 30px 0px 30px;
 	background-color: var(--color-vlightBlue);
 	background-image: url('https://www.pngarts.com/files/10/Blur-Transparent-Image.png');
 	background-size: cover;
@@ -90,11 +90,18 @@
 .AdminBtn:focus {
 	border: 2px solid #528f3f;
 }
-
+@media screen and (max-width: 768px) {
+	.LoginContainer {
+		gap: 0;
+		grid-template-columns: repeat(2, 1fr);
+		display: unset;
+	}
+}
 @media screen and (min-width: 768px) {
 	.LoginContainer {
 		gap: 0;
 		grid-template-columns: repeat(2, 1fr);
+		height: 100vh;
 	}
 
 	.LoginTypes > h1 {
@@ -111,3 +118,5 @@
 		font-size: 15px;
 	}
 }
+
+

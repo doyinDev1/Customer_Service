@@ -96,7 +96,6 @@ const ViewUsers = () => {
 
     return (
         <>
-{console.log(adminUser)}
             <h3 className={common.SectionTitle}>
                 All Users
             </h3>
