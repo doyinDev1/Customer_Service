@@ -89,7 +89,7 @@ const RenderDownloadXLSXButton = ({ list, header, fileName, loopRef }) => {
 		<button
 			disabled={!list || !Array.isArray(list) || list.length < 1}
 			onClick={() => generateExcel()}>
-			Download XLXS file
+			Download XLSX
 		</button>
 	)
 }

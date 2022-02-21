@@ -139,7 +139,7 @@ const CreateUsers = () => {
 							name="employeeID"
 							id="employeeID"
 							placeholder="Employee ID"
-							{...register('employeeID', {
+							{...register('employee_id', {
 								required: true,
 							})}
 						/>

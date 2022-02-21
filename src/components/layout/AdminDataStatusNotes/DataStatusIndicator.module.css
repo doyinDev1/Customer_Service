@@ -1,0 +1,32 @@
+.DataError {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.DataError > p {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    padding: 5px 30px;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #e9cdcd9c;
+}
+
+.Icon {
+    font-size: 55px !important;
+    color: #444 !important;
+}
+
+@media only screen and (min-width: 768px){
+    .Icon {
+        font-size: 70px !important;
+    }
+
+    .DataError > p {
+        font-size: 14px;
+    }
+}

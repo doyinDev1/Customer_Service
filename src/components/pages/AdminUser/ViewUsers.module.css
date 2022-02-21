@@ -1,0 +1,10 @@
+.ActionButton {
+	padding: 5px !important;
+	margin: 0 !important;
+	border-radius: 2px !important;
+}
+
+.ActionButton:hover {
+	background-color: #ccc !important;
+	color: white !important;
+}
