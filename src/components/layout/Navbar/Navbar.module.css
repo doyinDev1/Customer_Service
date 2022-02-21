@@ -1,42 +1,48 @@
 .Navbar {
-	display: flex;
+  display: flex;
 
-	flex-direction: column;
+  flex-direction: column;
 
-	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-	margin: 0;
-	padding: 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  margin: 0;
+  padding: 0;
 
-	/* background-color: var(--color-primary); */
+  /* background-color: var(--color-primary); */
 }
 
 .NavBrandContainer {
-	flex-direction: column;
-	padding: 3px 0;
+  flex-direction: column;
+  padding: 3px 0;
 }
 
 .NavContainer {
-	width: 100%;
-	background-color: var(--color-primary);
+  width: 100%;
+  background-color: var(--color-primary);
 }
 
 .Brand {
-	/* margin-right: auto;
+  /* margin-right: auto;
 	background-color: #fff; */
-	width: 100%;
-	justify-self: flex-start;
-	background-color: #fff;
+  width: 100%;
+  justify-self: flex-start;
+  background-color: #fff;
 }
 
 .Nav {
-	background-color: var(--color-primary);
-	width: 100%;
-	padding: 5px 0;
-	display: flex;
-	justify-content: flex-end;
+  background-color: var(--color-primary);
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: flex-end;
 }
 .Logo {
-	width: 6rem;
-	object-fit: contain;
-	margin-right: auto;
+  width: 6rem;
+  object-fit: contain;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .Logo {
+    margin-left: 20px;
+  }
 }

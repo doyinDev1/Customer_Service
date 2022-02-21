@@ -6,6 +6,7 @@ import AdminDashboardHeader from '../../layout/AdminDashboardHeader/AdminDashboa
 // import AdminSideNav from '../../layout/AdminSideNav/AdminSideNav';
 import CreateUsers from '../CreateUsers/CreateUsers';
 import Reports from './Reporting/Reports';
+import ViewUsers from './ViewUsers'
 import UserLogs from './UserLogs';
 
 const Dashboard = () => {
@@ -33,6 +34,12 @@ const Dashboard = () => {
 		},
 		{
 			id: 3,
+			title: 'View Users',
+			Icon: Error,
+			page: <ViewUsers />,
+		},
+		{
+			id: 4,
 			title: 'Add Users',
 			Icon: Error,
 			page: <CreateUsers />,

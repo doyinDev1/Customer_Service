@@ -34,3 +34,34 @@ export const useFecthFilters = () => {
 
 	return { status, data };
 };
+
+
+export const useFetchAllUsers = () => {
+	const adminUser = JSON.parse(sessionStorage.getItem('rpAdmin'));
+	const fetchAllUsers = async () => {
+		try {
+			const { data } = await axios.post(`${Config.url.API_URL}/all-users`, {
+				token: adminUser.token,
+			});
+			return data.data;
+		} catch (error) {
+			return {
+				errorRes:
+					error.response && error.response.data.message
+						? error.response.data.message
+						: error.message,
+			};
+		}
+	};
+	const { status, data, isFetching } = useQuery(
+		['RoleplayUsers', adminUser],
+		() => fetchAllUsers(),
+		{
+			keepPreviousData: false,
+			refetchOnWindowFocus: true,
+		}
+	);
+	return { status, data, isFetching };
+};
+
+

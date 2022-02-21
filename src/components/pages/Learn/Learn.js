@@ -33,11 +33,7 @@ const Learn = () => {
 		setFirstLoginModal(false);
 	};
 
-
-
 	const [showAssessmentModal, setAssessmentModal] = useState(false);
-
-	// console.log(data);
 
 	return (
 		<>
