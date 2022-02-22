@@ -6,6 +6,7 @@ import ViewCourse from './components/pages/ViewCourse/ViewCourse';
 import AdminUser from './components/pages/AdminUser/Dashboard';
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import PDFViewer from './components/layout/PDFViewer/PDFVIewer';
 import UserAuthRoute from './components/hoc/AuthRoutes/UserAuthRoute';
 import AdminAuthRoute from './components/hoc/AuthRoutes/AdminAuthRoute';
 
@@ -35,7 +36,7 @@ function App() {
 						</UserAuthRoute>
 					}
 				/>
-
+				<Route exact path="/pdf" element={<PDFViewer />} />
 				<Route
 					exact
 					path="/admin-dashboard"

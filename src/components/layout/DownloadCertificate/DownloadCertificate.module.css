@@ -1,0 +1,21 @@
+.DownloadBtn {
+	/* border: none;
+	outline: none; */
+	/* margin-left: 1rem; */
+	font-family: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 14px;
+	border-radius: 4px;
+	color: var(--color-blue);
+	border: 1px solid var(--color-blue);
+}
+
+.DownloadBtn:hover {
+	color: #fff;
+	background-color: var(--color-blue);
+}
+
+.DownloadBtn svg {
+	margin-right: 5px;
+}
