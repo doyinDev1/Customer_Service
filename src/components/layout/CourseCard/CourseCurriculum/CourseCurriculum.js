@@ -2,7 +2,7 @@ import classes from './CourseCurriculum.module.css';
 import { useState } from 'react';
 import Iframe from 'react-iframe';
 import { Modal } from 'react-bootstrap';
-import { CheckCircleRounded } from '@material-ui/icons';
+import { CheckCircleRounded, PlayCircleOutline } from '@material-ui/icons';
 
 const CourseCurriculum = (props) => {
 	const [IframeModal, setIframeModal] = useState(false);
@@ -25,6 +25,7 @@ const CourseCurriculum = (props) => {
 							className={classes.ModuleName}
 						>
 							{props.modules[0].status === 'pass' && <CheckCircleRounded />}{' '}
+							{props.modules[0].status !== 'pass' && <PlayCircleOutline />}
 							{props.modules[0].module_title}{' '}
 						</button>
 

@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactApexChart from 'react-apexcharts'
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
 
 const StackedColumns = ({
 	title,
@@ -38,19 +38,19 @@ const StackedColumns = ({
 			xaxis: {
 				categories: courseModuleEngagementLabels,
 				fontSize: '12px',
-				fontFamily: 'Poppins',
+				fontFamily: 'Montserrat',
 			},
 			yaxis: {
 				title: {
 					text: undefined,
 				},
 				fontSize: '16px',
-				fontFamily: 'Poppins',
+				fontFamily: 'Montserrat',
 			},
 			tooltip: {
 				x: {
 					formatter: function (val) {
-						return val.split('-')[0] + 'odule ' + val.split('-')[1]
+						return val.split('-')[0] + 'odule ' + val.split('-')[1];
 					},
 				},
 			},
@@ -60,7 +60,7 @@ const StackedColumns = ({
 			legend: {
 				position: 'bottom',
 				fontSize: '15px',
-				fontFamily: 'Nunito',
+				fontFamily: 'Montserrat',
 				fontWeight: 600,
 
 				horizontalAlign: 'left',
@@ -81,35 +81,36 @@ const StackedColumns = ({
 				},
 			],
 		},
-	}
+	};
 
 	const style = {
 		display: 'grid',
 		placeItems: 'center',
 		flexGrow: '1',
 		padding: '0 5px',
-	}
+	};
 
 	return (
-		<div id='chart' style={style}>
+		<div id="chart" style={style}>
 			<p
 				style={{
-					fontFamily: 'Nunito',
+					fontFamily: 'Montserrat',
 					fontSize: '14px',
 					fontWeight: '600',
 					color: '#777',
-				}}>
+				}}
+			>
 				{title.toUpperCase()}
 			</p>
 			<ReactApexChart
 				options={data?.options}
 				series={data?.series}
-				type='bar'
+				type="bar"
 				height={330}
 				width={350}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default StackedColumns
+export default StackedColumns;

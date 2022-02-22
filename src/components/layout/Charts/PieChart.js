@@ -1,20 +1,14 @@
-import React from 'react'
-import ReactApexChart from 'react-apexcharts'
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
 
-const PieChart = ({
-	title,
-	labels = [],
-	series = [],
-	colors = [],
-	fileDownloadName,
-}) => {
+const PieChart = ({ title, labels = [], series = [], colors = [], fileDownloadName }) => {
 	const data = {
 		series: series,
 		options: {
 			chart: {
 				// width: 380,
 				type: 'pie',
-                toolbar: {
+				toolbar: {
 					show: true,
 					offsetX: 0,
 					offsetY: 0,
@@ -28,7 +22,7 @@ const PieChart = ({
 							headerCategory: 'category',
 							headerValue: 'value',
 							dateFormatter(timestamp) {
-								return new Date(timestamp).toDateString()
+								return new Date(timestamp).toDateString();
 							},
 						},
 						svg: {
@@ -43,10 +37,10 @@ const PieChart = ({
 			},
 			labels: labels,
 			colors: colors,
-            legend: {
+			legend: {
 				position: 'bottom',
 				fontSize: '15px',
-				fontFamily: 'Nunito',
+				fontFamily: 'Montserrat',
 				fontWeight: 600,
 			},
 			responsive: [
@@ -63,35 +57,36 @@ const PieChart = ({
 				},
 			],
 		},
-	}
+	};
 
 	const style = {
 		display: 'grid',
 		placeItems: 'center',
 		flexGrow: '1',
 		padding: '0 5px',
-	}
+	};
 
 	return (
-		<div id='chart' style={style}>
+		<div id="chart" style={style}>
 			<p
 				style={{
-					fontFamily: 'Nunito',
+					fontFamily: 'Montserrat',
 					fontSize: '14px',
 					fontWeight: '600',
 					color: '#555',
-				}}>
+				}}
+			>
 				{title.toUpperCase()}
 			</p>
 			<ReactApexChart
 				options={data.options}
 				series={data.series}
-				type='pie'
-                height={350}
+				type="pie"
+				height={350}
 				width={380}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default PieChart
+export default PieChart;

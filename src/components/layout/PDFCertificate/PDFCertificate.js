@@ -1,6 +1,6 @@
 import { Document, Page, Text, View, StyleSheet, Font, Image } from '@react-pdf/renderer';
 import PoppinsMedium from '../../../font/Poppins-Medium.ttf';
-import PoppinsLight from '../../../font/Poppins-Thin.ttf';
+import NotoSerifDisplay from '../../../font/NotoSerifDisplay-Black.ttf';
 // import MontserrantBold from '../../../fonts/Montserrat-Bold.ttf';
 // import Playfair from '../../../fonts/PlayfairDisplay-SemiBoldItalic.ttf';
 
@@ -10,11 +10,11 @@ Font.register({
 	fonts: [{ src: PoppinsMedium, fontWeight: 400 }],
 });
 
-// Font.register({
-// 	family: 'PoppinsLight',
-// 	format: 'truetype',
-// 	fonts: [{ src: PoppinsLight, fontWeight: 300 }],
-// });
+Font.register({
+	family: 'NotoSerifDisplay',
+	format: 'truetype',
+	fonts: [{ src: NotoSerifDisplay, fontWeight: 900 }],
+});
 
 const PDFCertificate = (props) => {
 	const currentDate = new Date();
@@ -27,22 +27,23 @@ const PDFCertificate = (props) => {
 						<View style={{ flex: 1 }}>
 							<Text
 								style={{
-									color: '#fe650d',
+									color: '#192034',
 									// position: 'absolute',
 									// marginVertical: 20,
 									// position: 'absolute',
 									// top: '0%',
 									// left: '35%',
 									// marginHorizontal: 190,
-									marginTop: 45,
+									marginTop: 80,
 									// marginLeft: 230,
-									fontSize: 56,
-									fontFamily: 'Poppins',
+									fontSize: 38,
+									fontFamily: 'NotoSerifDisplay',
 									textAlign: 'center',
-									fontWeight: '700',
+									fontWeight: '900',
 								}}
 							>
 								{userInfo.name}
+								{/* Abisola Morohunfolu */}
 							</Text>
 						</View>
 					</View>
@@ -56,13 +57,14 @@ const PDFCertificate = (props) => {
 						<Text
 							style={{
 								fontFamily: 'Poppins',
-								fontSize: 14,
-								marginTop: 180,
+								fontSize: 20,
+								marginTop: 260,
+								fontWeight: '700',
 								// marginHorizontal: 140,
 								// position: 'absolute',
 								// top: '67%',
 								// left: '23%',
-								color: '#002049',
+								color: '#192034',
 								textAlign: 'center',
 							}}
 						>
@@ -72,16 +74,16 @@ const PDFCertificate = (props) => {
 							style={{
 								fontFamily: 'Poppins',
 								fontSize: 16,
-								marginTop: 10,
+								marginTop: 0,
 								// marginHorizontal: 140,
 								// position: 'absolute',
 								// top: '67%',
 								// left: '23%',
-								color: '#002049',
+								color: '#192034',
 								textAlign: 'center',
 							}}
 						>
-							The {props.courseName} Course on{' '}
+							on{' '}
 							{currentDate.toLocaleDateString('en-GB', {
 								year: 'numeric',
 								month: 'numeric',

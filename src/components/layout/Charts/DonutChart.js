@@ -1,12 +1,6 @@
-import ReactApexChart from 'react-apexcharts'
+import ReactApexChart from 'react-apexcharts';
 
-const DonutChart = ({
-	title,
-	labels = [],
-	series = [],
-	colors = [],
-	fileDownloadName,
-}) => {
+const DonutChart = ({ title, labels = [], series = [], colors = [], fileDownloadName }) => {
 	const data = {
 		series: series,
 		options: {
@@ -26,7 +20,7 @@ const DonutChart = ({
 							headerCategory: 'category',
 							headerValue: 'value',
 							dateFormatter(timestamp) {
-								return new Date(timestamp).toDateString()
+								return new Date(timestamp).toDateString();
 							},
 						},
 						svg: {
@@ -44,7 +38,7 @@ const DonutChart = ({
 			legend: {
 				position: 'bottom',
 				fontSize: '15px',
-				fontFamily: 'Nunito',
+				fontFamily: 'Montserrat',
 				fontWeight: 600,
 			},
 			plotOptions: {
@@ -56,19 +50,19 @@ const DonutChart = ({
 							name: {
 								show: true,
 								fontSize: '16px',
-								fontFamily: 'Nunito',
+								fontFamily: 'Montserrat',
 								fontWeight: 500,
 							},
 							value: {
 								show: true,
 								fontSize: '16px',
-								fontFamily: 'Nunito',
+								fontFamily: 'Montserrat',
 								fontWeight: 600,
 							},
 							total: {
 								show: true,
 								fontSize: '16px',
-								fontFamily: 'Nunito',
+								fontFamily: 'Montserrat',
 								fontWeight: 500,
 								color: 'black',
 							},
@@ -90,35 +84,36 @@ const DonutChart = ({
 				},
 			],
 		},
-	}
+	};
 
 	const style = {
 		display: 'grid',
 		placeItems: 'center',
 		flexGrow: '1',
 		padding: '0 5px',
-	}
+	};
 
 	return (
-		<div id='chart' style={style}>
+		<div id="chart" style={style}>
 			<p
 				style={{
-					fontFamily: 'Nunito',
+					fontFamily: 'Montserrat',
 					fontSize: '14px',
 					fontWeight: '600',
 					color: '#555',
-				}}>
+				}}
+			>
 				{title.toUpperCase()}
 			</p>
 			<ReactApexChart
 				options={data.options}
 				series={data.series}
-				type='donut'
+				type="donut"
 				height={350}
 				width={300}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default DonutChart
+export default DonutChart;

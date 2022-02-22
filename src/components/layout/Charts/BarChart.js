@@ -1,4 +1,4 @@
-import ReactApexChart from 'react-apexcharts'
+import ReactApexChart from 'react-apexcharts';
 
 const Bars = ({
 	title,
@@ -32,7 +32,7 @@ const Bars = ({
 							headerCategory: 'category',
 							headerValue: 'value',
 							dateFormatter(timestamp) {
-								return new Date(timestamp).toDateString()
+								return new Date(timestamp).toDateString();
 							},
 						},
 						svg: {
@@ -89,35 +89,36 @@ const Bars = ({
 				},
 			],
 		},
-	}
+	};
 
 	const style = {
 		display: 'grid',
 		placeItems: 'center',
 		flexGrow: '1',
 		padding: '0 5px',
-	}
+	};
 
 	return (
-		<div id='chart' style={style}>
+		<div id="chart" style={style}>
 			<p
 				style={{
-					fontFamily: 'Nunito',
+					fontFamily: 'Montserrat',
 					fontSize: '14px',
 					fontWeight: '600',
 					color: '#555',
-				}}>
+				}}
+			>
 				{title.toUpperCase()}
 			</p>
 			<ReactApexChart
 				options={data?.options}
 				series={data?.series}
-				type='bar'
+				type="bar"
 				height={300}
 				width={350}
 			/>
 		</div>
-	)
-}
+	);
+};
 
-export default Bars
+export default Bars;
