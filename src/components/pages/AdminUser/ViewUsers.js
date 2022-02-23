@@ -3,6 +3,8 @@ import { Spinner, Table } from 'react-bootstrap'
 import classes from './ViewUsers.module.css'
 import common from '../../../commonStyles/common.module.css'
 import { useFetchAllUsers } from '../../../DataQueries/adminHooks/fetch'
+import { useFetchAndSearchRoleplayUsers } from '../../../DataQueries/adminHooks/fetch'
+
 import { useDeleteRoleplayUser } from '../../../DataQueries/adminHooks/mutation'
 // import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
 import { DeleteOutline, Edit } from '@mui/icons-material'
@@ -14,23 +16,25 @@ import { currentDateTime } from '../../helpers/getCurrentTime'
 import RenderDownloadXLSXButton from '../../helpers/generateExcelFile'
 
 const ViewUsers = () => {
-    const adminInfo = JSON.parse(localStorage.getItem('rpAdmin'))
+    const adminInfo = JSON.parse(sessionStorage.getItem('rpAdmin'))
     const [page, setPage] = React.useState(1)
     const [rowsPerPage, setRowsPerPage] = React.useState(100)
-    const [searchValue, setSearchValue] = React.useState('')
+    const [searchRequest, setSearchRequest] = React.useState('')
     const { status: allUserStatus, data: allUserData, isFetching: isFetchingAllUsers } = useFetchAllUsers()
-    // const {
-    //     status,
-    //     data: companyUsers,
-    //     isFetching,
-    // } = useFetchAndSearchCompanyUsers(searchValue, page, rowsPerPage)
+    const {
+        status,
+        data: searchedUsers,
+        isFetching,
+    } = useFetchAndSearchRoleplayUsers(searchRequest)
     const { deleteRoleplayUser } = useDeleteRoleplayUser();
     const [editModal, setEditModal] = React.useState(false)
     const [selectedUser, setSelectedUser] = React.useState(null)
 
     const handleSearch = (e) => {
-        setSearchValue(e.target.value)
+        setSearchRequest(e.target.value)
     }
+
+    console.log(adminInfo.token);
 
     const onEditModal = (user) => {
         setSelectedUser(user)
@@ -170,6 +174,50 @@ const ViewUsers = () => {
                                         <td>{allUserDataa.location}</td>
                                     </tr>
                                 ))}
+
+
+
+{console.log(searchedUsers)}
+{/* {searchedUsers?.users === 'success' && */}{searchedUsers?.users === 'success' &&
+                                searchedUsers?.users.length >= 1 &&
+                                searchedUsers?.users.map((searchedUsersdata) => (
+                                    <tr key={searchedUsersdata.user_id}>
+                                        <td>
+                                            <IconButton
+                                                className={classes.ActionButton}
+                                                onClick={() => handleDeleteRoleplayUser(searchedUsersdata)}
+                                                >
+                                                <DeleteOutline
+                                                    style={{ fontSize: '17px', color: 'brown' }}
+                                                />
+                                            </IconButton>
+                                            <IconButton
+                                                className={classes.ActionButton}
+                                                onClick={() => onEditModal(searchedUsersdata)}
+                                                >
+                                                <Edit
+                                                    style={{
+                                                        fontSize: '17px',
+                                                        color: 'var(--color-primary)',
+                                                    }}
+                                                />
+                                            </IconButton>
+                                        </td>
+                                        <td>{searchedUsersdata?.employee_id}</td>
+                                        <td>
+                                            {searchedUsersdata?.name}
+                                        </td>
+                                        <td>{searchedUsersdata?.email}</td>
+                                        <td>{searchedUsersdata?.gender}</td>
+                                        <td>{searchedUsersdata?.grade}</td>
+                                        <td>{searchedUsersdata?.location}</td>
+                                    </tr>
+                                ))}
+
+
+
+
+
                         </tbody>                       
                     </Table>
 
@@ -185,15 +233,25 @@ const ViewUsers = () => {
                 </div>
 
                 <p style={{ textAlign: 'center', marginTop: '10px' }}>
-                    {/* {searchValue && isFetching && 'LOADING FILTERED DATA...'} */}
+                    {/* {searchRequest && isFetching && 'LOADING FILTERED DATA...'} */}
                 </p>
 
                 {/* <DataStatusIndicator
 					status={status}
-					dataNode1={companyUsers?.users}
-					dataNode2={companyUsers}
+					dataNode1={searchedUsers?.users}
+					dataNode2={searchedUsers}
 				/> */}
             </section>
+
+
+
+
+
+
+
+
+
+
 
             <EditUserModal
 				editModal={editModal}

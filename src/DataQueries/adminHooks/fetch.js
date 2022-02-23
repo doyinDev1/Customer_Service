@@ -65,3 +65,34 @@ export const useFetchAllUsers = () => {
 };
 
 
+// SEARCH ROLEPLAY USERS
+export const useFetchAndSearchRoleplayUsers = (searchRequest) => {
+	const adminUser = JSON.parse(sessionStorage.getItem('rpAdmin'));
+	const params = {
+		token: adminUser.token,
+		searchRequest: searchRequest
+	};
+	const fetchRoleplaySearchUsers = async () => {
+		try {
+			const { data } = await axios.get(`${Config.url.API_URL}/search-user`, params);
+			return data
+			} catch (error) {
+			return {
+				errorRes:
+					error.response && error.response.data.message
+						? error.response.data.message
+						: error.message,
+			};
+		}
+	};
+
+	const { status, data, isFetching } = useQuery(
+		['RoleplayUsers', adminUser, searchRequest],
+		() => fetchRoleplaySearchUsers(),
+		{
+			keepPreviousData: true,
+			refetchOnWindowFocus: true,
+		}
+	);
+	return { status, data, isFetching };
+};
