@@ -218,13 +218,11 @@ export const useFetchAllUsers = () => {
 // SEARCH ROLEPLAY USERS
 export const useFetchAndSearchRoleplayUsers = (searchRequest) => {
 	const adminUser = JSON.parse(sessionStorage.getItem('rpAdmin'));
-	const params = {
-		token: adminUser.token,
-		searchRequest: searchRequest
-	};
+
 	const fetchRoleplaySearchUsers = async () => {
 		try {
-			const { data } = await axios.get(`${Config.url.API_URL}/search-user`, params);
+			const { data } = await axios.get(`${Config.url.API_URL}/search-user?token=${adminUser.token}&searchRequest=${searchRequest}`)
+
 			return data
 			} catch (error) {
 			return {

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useEffect , useState } from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 import classes from './ViewUsers.module.css'
 import common from '../../../commonStyles/common.module.css'
@@ -16,25 +17,24 @@ import { currentDateTime } from '../../helpers/getCurrentTime'
 import RenderDownloadXLSXButton from '../../helpers/generateExcelFile'
 
 const ViewUsers = () => {
-    const adminInfo = JSON.parse(sessionStorage.getItem('rpAdmin'))
-    const [page, setPage] = React.useState(1)
-    const [rowsPerPage, setRowsPerPage] = React.useState(100)
-    const [searchRequest, setSearchRequest] = React.useState('')
+    // const [page, setPage] = React.useState(1)
+    // const [rowsPerPage, setRowsPerPage] = React.useState(100)
+    const [searchRequest, setSearchRequest] = useState('')
     const { status: allUserStatus, data: allUserData, isFetching: isFetchingAllUsers } = useFetchAllUsers()
     const {
-        status,
+        status: searchedStatus,
         data: searchedUsers,
-        isFetching,
+        isFetching: fetchingSearch,
     } = useFetchAndSearchRoleplayUsers(searchRequest)
     const { deleteRoleplayUser } = useDeleteRoleplayUser();
-    const [editModal, setEditModal] = React.useState(false)
-    const [selectedUser, setSelectedUser] = React.useState(null)
+    const [editModal, setEditModal] = useState(false)
+    const [selectedUser, setSelectedUser] = useState(null)
 
     const handleSearch = (e) => {
         setSearchRequest(e.target.value)
+        // setAllUserStatuse({})
     }
-
-    console.log(adminInfo.token);
+   
 
     const onEditModal = (user) => {
         setSelectedUser(user)
@@ -96,7 +96,6 @@ const ViewUsers = () => {
         'Grade',
         'Location',
     ]
-	const adminUser = JSON.parse(sessionStorage.getItem('rpAdmin'));
 
     return (
         <>
@@ -107,7 +106,7 @@ const ViewUsers = () => {
                 <div className={common.TableWrapper} style={{ margin: '0 10px' }}>
                     <div className={common.TableExtras}>
                         <h3>
-                            Total Count:{' '} 
+                            Total Count:{' '}
                             {allUserStatus === 'loading' ? <Spinner /> : allUserData?.length}
 
                         </h3>
@@ -141,21 +140,21 @@ const ViewUsers = () => {
                         <tbody>
                             {allUserStatus === 'success' &&
                                 allUserData?.length >= 1 &&
-                                allUserData?.map((allUserDataa) => (
-                                    <tr key={allUserDataa.user_id}>
+                                allUserData?.map((allRoleplayData) => (
+                                    <tr key={allRoleplayData?.user_id}>
                                         <td>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => handleDeleteRoleplayUser(allUserDataa)}
-                                                >
+                                                onClick={() => handleDeleteRoleplayUser(allRoleplayData)}
+                                            >
                                                 <DeleteOutline
                                                     style={{ fontSize: '17px', color: 'brown' }}
                                                 />
                                             </IconButton>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => onEditModal(allUserDataa)}
-                                                >
+                                                onClick={() => onEditModal(allRoleplayData)}
+                                            >
                                                 <Edit
                                                     style={{
                                                         fontSize: '17px',
@@ -164,37 +163,34 @@ const ViewUsers = () => {
                                                 />
                                             </IconButton>
                                         </td>
-                                        <td>{allUserDataa.employee_id}</td>
+                                        <td>{allRoleplayData?.employee_id}</td>
                                         <td>
-                                            {allUserDataa.name}
+                                            {allRoleplayData?.name}
                                         </td>
-                                        <td>{allUserDataa.email}</td>
-                                        <td>{allUserDataa.gender}</td>
-                                        <td>{allUserDataa.grade}</td>
-                                        <td>{allUserDataa.location}</td>
+                                        <td>{allRoleplayData?.email}</td>
+                                        <td>{allRoleplayData?.gender}</td>
+                                        <td>{allRoleplayData?.grade}</td>
+                                        <td>{allRoleplayData?.location}</td>
                                     </tr>
                                 ))}
 
-
-
-{console.log(searchedUsers)}
-{/* {searchedUsers?.users === 'success' && */}{searchedUsers?.users === 'success' &&
-                                searchedUsers?.users.length >= 1 &&
-                                searchedUsers?.users.map((searchedUsersdata) => (
-                                    <tr key={searchedUsersdata.user_id}>
+                            {searchedStatus === 'success' &&
+                                searchedUsers?.search.length >= 1 &&
+                                searchedUsers?.search.map((allRoleplayData) => (
+                                    <tr key={allRoleplayData?.user_id}>
                                         <td>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => handleDeleteRoleplayUser(searchedUsersdata)}
-                                                >
+                                                onClick={() => handleDeleteRoleplayUser(allRoleplayData)}
+                                            >
                                                 <DeleteOutline
                                                     style={{ fontSize: '17px', color: 'brown' }}
                                                 />
                                             </IconButton>
                                             <IconButton
                                                 className={classes.ActionButton}
-                                                onClick={() => onEditModal(searchedUsersdata)}
-                                                >
+                                                onClick={() => onEditModal(allRoleplayData)}
+                                            >
                                                 <Edit
                                                     style={{
                                                         fontSize: '17px',
@@ -203,25 +199,20 @@ const ViewUsers = () => {
                                                 />
                                             </IconButton>
                                         </td>
-                                        <td>{searchedUsersdata?.employee_id}</td>
+                                        <td>{allRoleplayData?.employee_id}</td>
                                         <td>
-                                            {searchedUsersdata?.name}
+                                            {allRoleplayData?.name}
                                         </td>
-                                        <td>{searchedUsersdata?.email}</td>
-                                        <td>{searchedUsersdata?.gender}</td>
-                                        <td>{searchedUsersdata?.grade}</td>
-                                        <td>{searchedUsersdata?.location}</td>
+                                        <td>{allRoleplayData?.email}</td>
+                                        <td>{allRoleplayData?.gender}</td>
+                                        <td>{allRoleplayData?.grade}</td>
+                                        <td>{allRoleplayData?.location}</td>
                                     </tr>
                                 ))}
-
-
-
-
-
-                        </tbody>                       
+                        </tbody>
                     </Table>
 
-                 {allUserData?.length >= 1 && (
+                    {/* {allUserData?.length >= 1 && (
 						<MuiPagination
 							page={page}
 							setPage={setPage}
@@ -229,7 +220,7 @@ const ViewUsers = () => {
 							setRowsPerPage={setRowsPerPage}
 							count={allUserData && allUserData?.length}
 						/>
-					)}                    
+					)}                     */}
                 </div>
 
                 <p style={{ textAlign: 'center', marginTop: '10px' }}>
@@ -243,21 +234,11 @@ const ViewUsers = () => {
 				/> */}
             </section>
 
-
-
-
-
-
-
-
-
-
-
             <EditUserModal
-				editModal={editModal}
-				selectedUser={selectedUser}
-				hideEditModal={hideEditModal}
-			/>
+                editModal={editModal}
+                selectedUser={selectedUser}
+                hideEditModal={hideEditModal}
+            />
         </>
     )
 }
