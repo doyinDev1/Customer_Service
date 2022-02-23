@@ -3,18 +3,21 @@
 }
 
 .ContentContainer {
-	background-color:var(--color-vlightBlue);
+	background-color: rgb(243, 243, 243, 0.3);
 	padding: 10px;
 	border-radius: 4px;
 }
 
 .ContentContainer h3 {
 	font-size: 20px;
+	color: var(--color-primary);
+	font-weight: 700;
 }
 
 .ContentContainer h6 {
-	font-size: 18px;
-	color: var(--color-green);
+	font-size: 16px;
+	color: var(--color-primary);
+	font-weight: 700;
 }
 
 .FeatureBox {
@@ -27,7 +30,7 @@
 	height: 3rem;
 	width: 3rem;
 	margin-right: 1rem;
-	fill: var(--color-green);
+	fill: var(--color-primary);
 }
 
 .ExitButton {

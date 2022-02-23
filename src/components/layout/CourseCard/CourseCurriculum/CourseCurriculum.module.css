@@ -19,6 +19,12 @@
 	transition: all ease-in-out 0.4s;
 	color: #fff;
 	text-transform: capitalize;
+	display: flex;
+	align-items: center;
+}
+
+.ModuleName svg {
+	margin-right: 5px;
 }
 
 .ActiveModule {

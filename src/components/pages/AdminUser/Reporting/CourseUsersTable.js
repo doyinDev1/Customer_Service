@@ -16,8 +16,6 @@ const CourseUsersTable = ({
 	page,
 	rowsPerPage,
 	setRowsPerPage,
-	groupLabel,
-	roleLabel,
 	gradeLabel,
 	locationLabel,
 	genderLabel,
@@ -26,7 +24,7 @@ const CourseUsersTable = ({
 	const header = [
 		'Employee ID',
 		'Full Name',
-		'Progress',
+		// 'Progress',
 		'Score (%)',
 		'Score Range (%)',
 		'Assessment',
@@ -70,16 +68,9 @@ const CourseUsersTable = ({
 							singleCourseReport?.courseTableDetails?.length >= 1 &&
 							singleCourseReport?.courseTableDetails?.map((emp) => (
 								<tr key={emp.employeeID}>
-									<td>{emp.employeeID}</td>
-									<td>{emp.usersName}</td>
-									<td>
-										{emp.moduleProgress} (
-										{
-											// eslint-disable-next-line no-eval
-											(eval(emp.moduleProgress) * 100).toFixed()
-										}
-										%)
-									</td>
+									<td>{emp.employee_id}</td>
+									<td>{emp.name}</td>
+									{/* <td>{Number(emp?.moduleProgress?.split('/')[0]) * 100}%</td> */}
 									<td>{emp.score}</td>
 									<td>{emp.averageRange ? emp.averageRange : '-'}</td>
 									<td>

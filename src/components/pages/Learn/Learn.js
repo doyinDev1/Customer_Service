@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Toaster } from 'react-hot-toast';
 import CourseCard from '../../layout/CourseCard/CourseCard';
+import DownloadCertificate from '../../layout/DownloadCertificate/DownloadCertificate';
 // import toast from 'react-hot-toast';
 import { useFecthEnrolledCourses } from '../../../DataQueries/userHooks/fetch';
 import CustomSpinner from '../../layout/CustomSpinner/CustomSpinner';
@@ -80,9 +81,7 @@ const Learn = () => {
 									Take Assessment
 								</Button>
 
-								<Button disabled={!(data?.assessment[0]?.status === 'pass')}>
-									Download Certificate
-								</Button>
+								<DownloadCertificate status={data?.assessment[0]?.status} />
 							</div>
 						</div>
 					</div>

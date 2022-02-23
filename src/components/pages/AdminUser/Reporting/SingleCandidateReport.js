@@ -1,41 +1,43 @@
-// import { ErrorOutline } from '@mui/icons-material'
+import { ErrorOutline } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { Spinner, Table } from 'react-bootstrap';
-// import {
-// 	// useFetchAndSearchCompanyUsers,
-// 	useFetchOneCandidateReport,
-// } from '../../../DataQueries/companyHooks/fetch'
+import { useFetchCandidateSummary } from '../../../../DataQueries/adminHooks/fetch';
 import SearchDropDown from '../../../layout/DropDown/SearchDropDown';
-// import GroupedBars from '../../layout/Charts/GroupedBars'
+import GroupedBars from '../../../layout/Charts/GroupedBars';
 import classes from './Reporting.module.css';
 import common from '../../../../commonStyles/common.module.css';
-// import DataStatusIndicator from '../../layout/AdminDataStatusNotes/DataStatusIndicator'
-// import Loader from '../../layout/Loader/Loader'
-// import { currentDateTime } from '../../../helpers/getCurrentTime'
-// import RenderDownloadXLSXButton from '../../../helpers/generateExcelFile'
+import DataStatusIndicator from '../../../layout/DataStatusIndicator/DataStatusIndicator';
+import Loader from '../../../layout/CustomSpinner/CustomSpinner';
+import { currentDateTime } from '../../../helpers/getCurrentTime';
+import RenderDownloadXLSXButton from '../../../helpers/generateExcelFile'
 
 const SingleCandidateReport = () => {
-	const [candidateDetails, setCandidateDetails] = useState({});
+	const [candidateDetails, setCandidateDetails] = useState(null);
 	const [userID, setUserID] = useState(null);
 
-	// const {
-	// 	status: oneCandidateReportStatus,
-	// 	data: oneCandidateReport,
-	// 	isFetching,
-	// } = useFetchOneCandidateReport(userID && userID)
+	const {
+		status: oneCandidateReportStatus,
+		data: oneCandidateReport,
+		isFetching,
+	} = useFetchCandidateSummary(userID);
 
 	// var a = '3/2'
 	// var split = a.split('/')
 	// var result = parseInt(split[0], 10) / parseInt(split[1], 10)
 	// alert(result)
 
-	//variable for response from oneCandidateReport
-	// useEffect(() => {
+	// variable for response from oneCandidateReport
+	useEffect(() => {
+		setCandidateDetails(
+			oneCandidateReport?.candidateDetails && oneCandidateReport?.candidateDetails[0]
+		);
+	}, [oneCandidateReport?.candidateDetails]);
+
+	// if (oneCandidateReport?.candidateDetails && candidateDetails === null) {
 	// 	setCandidateDetails(
-	// 		oneCandidateReport?.candidateDetails &&
-	// 			oneCandidateReport?.candidateDetails[0]
-	// 	)
-	// }, [oneCandidateReport?.candidateDetails])
+	// 		oneCandidateReport?.candidateDetails && oneCandidateReport?.candidateDetails[0]
+	// 	);
+	// }
 
 	// Table header row and XLSX header row
 	const header = [
@@ -64,23 +66,19 @@ const SingleCandidateReport = () => {
 							<div className={classes.CourseValuesValues}>
 								<p>
 									Employee ID:
-									<span>{candidateDetails?.employeeID}</span>
+									<span>{candidateDetails?.employee_id}</span>
 								</p>
 								<p>
 									Name:
-									<span>{candidateDetails?.usersName}</span>
+									<span>{candidateDetails?.name}</span>
 								</p>
 								<p>
 									Email:
-									<span>{candidateDetails?.userEmail}</span>
-								</p>
-								<p>
-									Role:
-									<span>{candidateDetails?.roleName}</span>
+									<span>{candidateDetails?.email}</span>
 								</p>
 								<p>
 									Grade:
-									<span>{candidateDetails?.userGrade}</span>
+									<span>{candidateDetails?.grade}</span>
 								</p>
 								<p>
 									Location:
@@ -88,26 +86,26 @@ const SingleCandidateReport = () => {
 								</p>
 								<p>
 									Gender:
-									<span>{candidateDetails?.userGender}</span>
+									<span>{candidateDetails?.gender}</span>
 								</p>
 							</div>
-							{/* {isFetching && (
+							{isFetching && (
 								<div className={classes.LoadingScreen}>
 									<Loader />
 								</div>
-							)} */}
+							)}
 						</div>
 
 						<div className={classes.CourseValuesChart}>
 							<p>Candidate Score Summary</p>
 							<div className={classes.CourseChart}>
-								{/* {oneCandidateReport?.candidateSummary && (
+								{oneCandidateReport?.candidateSummary && (
 									<GroupedBars
-										title='Course Performance'
+										title="Course Performance"
 										colors={['#f17e3b', '#f5b579CC']}
 										candidateCourseData={oneCandidateReport?.candidateSummary}
-										fileDownloadName={`${candidateDetails?.employeeID} - ${
-											candidateDetails?.usersName
+										fileDownloadName={`${candidateDetails?.employee_id} - ${
+											candidateDetails?.name
 										}'s Course(s) Performance ${currentDateTime()}`}
 									/>
 								)}
@@ -115,18 +113,16 @@ const SingleCandidateReport = () => {
 									<div className={classes.LoadingScreen}>
 										<Loader />
 									</div>
-								)} */}
+								)}
 							</div>
-							{/* {oneCandidateReport?.candidateSummary?.length <= 0 && (
+							{oneCandidateReport?.candidateSummary?.length <= 0 && (
 								<div className={classes.LoadingScreen2}>
 									<div className={common.DataError} style={{ padding: '20px' }}>
 										<ErrorOutline style={{ fontSize: '100px' }} />
-										<p>
-											Candidate has no course record yet
-										</p>
+										<p>Candidate has no course record yet</p>
 									</div>
 								</div>
-							)} */}
+							)}
 						</div>
 					</div>
 
@@ -134,11 +130,11 @@ const SingleCandidateReport = () => {
 						<div className={common.TableExtras}>
 							<h3>
 								Total Count:{' '}
-								{/* {oneCandidateReportStatus === 'loading' ? (
+								{oneCandidateReportStatus === 'loading' ? (
 									<Spinner />
 								) : (
 									oneCandidateReport?.candidateSummary?.length
-								)} */}
+								)}
 							</h3>
 							<div className={common.TableInputs}>
 								{/* <input type='search' placeholder='Search' /> */}
@@ -163,25 +159,19 @@ const SingleCandidateReport = () => {
 							</thead>
 
 							<tbody>
-								{/* {oneCandidateReportStatus === 'success' &&
+								{oneCandidateReportStatus === 'success' &&
 									oneCandidateReport?.candidateSummary?.length >= 1 &&
 									oneCandidateReport?.candidateSummary?.map((emp, index) => (
 										<tr key={index}>
-											<td>{emp.courseName}</td>
+											<td>{emp.course_name}</td>
 											<td>
-												<button
-													className={`${
-														classes[`${emp.started ? 'YES' : 'NO'}`]
-													}`}>
+												<button className={`${classes[`${emp.started ? 'YES' : 'NO'}`]}`}>
 													{emp.started ? 'YES' : 'NO'}
 												</button>
 											</td>
 											<td>
 												{emp.moduleProgress} (
-												{
-													// eslint-disable-next-line no-eval
-													(eval(emp.moduleProgress) * 100).toFixed()
-												}
+												{(Number(emp.moduleProgress.split('/')[0]) * 100).toFixed()}
 												%)
 											</td>
 											<td>
@@ -196,22 +186,20 @@ const SingleCandidateReport = () => {
 													: 0}
 											</td>
 											<td>
-												<button className={`${classes[`${emp.status}`]}`}>
-													{emp.status}
-												</button>
+												<button className={`${classes[`${emp.status}`]}`}>{emp.status}</button>
 											</td>
 										</tr>
-									))} */}
+									))}
 							</tbody>
 						</Table>
 					</div>
 
-					{/* <DataStatusIndicator
+					<DataStatusIndicator
 						status={oneCandidateReportStatus}
 						dataNode1={oneCandidateReport?.candidateSummary}
 						dataNode2={oneCandidateReport?.candidateSummary}
 						noDataMessage={'Candidate has no course assignment/record yet'}
-					/> */}
+					/>
 				</div>
 			</div>
 		</div>
